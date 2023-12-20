@@ -1,0 +1,9 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:snowy_mountains": "2020-08-07 22:51:56 +0000"
+    },
+    "done": false
+  },
+  "DataVersion": 2578
+}
