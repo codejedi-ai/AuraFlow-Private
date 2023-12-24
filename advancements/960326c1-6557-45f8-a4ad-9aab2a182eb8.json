@@ -4676,18 +4676,6 @@
     },
     "done": true
   },
-  "minecraft:adventure/trim_with_all_exclusive_armor_patterns": {
-    "criteria": {
-      "armor_trimmed_minecraft:silence_armor_trim_smithing_template_smithing_trim": "2023-12-23 13:42:55 -0500"
-    },
-    "done": false
-  },
-  "minecraft:recipes/building_blocks/lapis_block": {
-    "criteria": {
-      "has_lapis_lazuli": "2023-12-23 14:00:16 -0500"
-    },
-    "done": true
-  },
   "minecraft:recipes/misc/silence_armor_trim_smithing_template_smithing_trim": {
     "criteria": {
       "has_smithing_trim_template": "2023-12-23 13:42:34 -0500"
@@ -4697,6 +4685,18 @@
   "minecraft:recipes/misc/silence_armor_trim_smithing_template": {
     "criteria": {
       "has_silence_armor_trim_smithing_template": "2023-12-23 13:42:34 -0500"
+    },
+    "done": true
+  },
+  "minecraft:adventure/trim_with_all_exclusive_armor_patterns": {
+    "criteria": {
+      "armor_trimmed_minecraft:silence_armor_trim_smithing_template_smithing_trim": "2023-12-23 13:42:55 -0500"
+    },
+    "done": false
+  },
+  "minecraft:adventure/trim_with_any_armor_pattern": {
+    "criteria": {
+      "armor_trimmed_minecraft:silence_armor_trim_smithing_template_smithing_trim": "2023-12-23 13:42:55 -0500"
     },
     "done": true
   },
@@ -4712,15 +4712,321 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/lapis_block": {
+    "criteria": {
+      "has_lapis_lazuli": "2023-12-23 14:00:16 -0500"
+    },
+    "done": true
+  },
   "minecraft:recipes/misc/firework_rocket_simple": {
     "criteria": {
       "has_gunpowder": "2023-12-23 14:02:07 -0500"
     },
     "done": true
   },
-  "minecraft:adventure/trim_with_any_armor_pattern": {
+  "minecraft:recipes/building_blocks/polished_andesite": {
     "criteria": {
-      "armor_trimmed_minecraft:silence_armor_trim_smithing_template_smithing_trim": "2023-12-23 13:42:55 -0500"
+      "has_andesite": "2023-12-23 21:38:31 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_deepslate": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/deepslate_tile_stairs_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/deepslate_brick_wall_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_deepslate_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_deepslate_slab_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/deepslate_brick_stairs_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/deepslate_brick_slab_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/deepslate_tile_slab_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/cobbled_deepslate_stairs": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/chiseled_deepslate_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/cobbled_deepslate_slab": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/deepslate_tile_wall_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/cobbled_deepslate_wall": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/polished_deepslate_wall_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/deepslate_bricks_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/deepslate_tiles_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/deepslate": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/polished_deepslate_stairs_from_cobbled_deepslate_stonecutting": {
+    "criteria": {
+      "has_cobbled_deepslate": "2023-12-23 21:48:15 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/candle": {
+    "criteria": {
+      "has_string": "2023-12-23 21:53:12 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/yellow_dye_from_dandelion": {
+    "criteria": {
+      "has_dandelion": "2023-12-24 12:08:27 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/oak_sign": {
+    "criteria": {
+      "has_planks": "2023-12-24 12:29:44 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bamboo_block": {
+    "criteria": {
+      "has_bamboo": "2023-12-24 12:32:49 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bamboo_planks": {
+    "criteria": {
+      "has_logs": "2023-12-24 12:35:35 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/bamboo_trapdoor": {
+    "criteria": {
+      "has_planks": "2023-12-24 12:40:06 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/bamboo_pressure_plate": {
+    "criteria": {
+      "has_planks": "2023-12-24 12:40:06 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bamboo_slab": {
+    "criteria": {
+      "has_planks": "2023-12-24 12:40:06 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/bamboo_button": {
+    "criteria": {
+      "has_planks": "2023-12-24 12:40:06 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/bamboo_fence_gate": {
+    "criteria": {
+      "has_planks": "2023-12-24 12:40:06 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bamboo_stairs": {
+    "criteria": {
+      "has_planks": "2023-12-24 12:40:06 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/bamboo_sign": {
+    "criteria": {
+      "has_planks": "2023-12-24 12:40:06 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/bamboo_door": {
+    "criteria": {
+      "has_planks": "2023-12-24 12:40:06 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/bamboo_fence": {
+    "criteria": {
+      "has_planks": "2023-12-24 12:40:06 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/slime_ball": {
+    "criteria": {
+      "has_slime_block": "2023-12-24 13:25:26 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/dye_white_carpet": {
+    "criteria": {
+      "has_needed_dye": "2023-12-24 13:45:49 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/dye_white_wool": {
+    "criteria": {
+      "has_needed_dye": "2023-12-24 13:45:49 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/white_candle": {
+    "criteria": {
+      "has_white_dye": "2023-12-24 13:45:49 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/dye_white_bed": {
+    "criteria": {
+      "has_needed_dye": "2023-12-24 13:45:49 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/glow_item_frame": {
+    "criteria": {
+      "has_item_frame": "2023-12-24 14:05:52 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/dye_light_blue_wool": {
+    "criteria": {
+      "has_needed_dye": "2023-12-24 14:24:24 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/dye_light_blue_bed": {
+    "criteria": {
+      "has_needed_dye": "2023-12-24 14:24:24 -0500"
+    },
+    "done": true
+  },
+  "gm4:root": {
+    "criteria": {
+      "automatic": "2023-12-24 14:23:06 -0500"
+    },
+    "done": true
+  },
+  "gm4-1.4:intro_song/welcome_toast": {
+    "criteria": {
+      "requirement": "2023-12-24 14:23:07 -0500"
+    },
+    "done": true
+  },
+  "gm4:custom_crafters": {
+    "criteria": {
+      "build_crafter": "2023-12-24 14:24:38 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/dye_light_blue_carpet": {
+    "criteria": {
+      "has_needed_dye": "2023-12-24 14:24:24 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/birch_sign": {
+    "criteria": {
+      "has_planks": "2023-12-24 14:32:40 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/light_blue_candle": {
+    "criteria": {
+      "has_light_blue_dye": "2023-12-24 14:24:24 -0500"
+    },
+    "done": true
+  },
+  "gm4-1.4:intro_song/play_song": {
+    "criteria": {
+      "requirement": "2023-12-24 14:23:08 -0500"
     },
     "done": true
   },
