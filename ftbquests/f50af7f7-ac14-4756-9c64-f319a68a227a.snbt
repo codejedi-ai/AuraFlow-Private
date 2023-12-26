@@ -1,0 +1,16 @@
+{
+	version: 1
+	uuid: "f50af7f7ac1447569c64f319a68a227a"
+	name: "Kir7N_"
+	can_edit: false
+	lock: false
+	money: 0L
+	auto_pin: false
+	task_progress: {
+		7CD52E1D2BAF4A81: 1
+	}
+	started: { }
+	completed: { }
+	claimed_rewards: { }
+	pinned_quests: [ ]
+}
