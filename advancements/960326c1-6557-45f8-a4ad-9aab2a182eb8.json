@@ -5265,5 +5265,23 @@
     },
     "done": true
   },
+  "gm4_end_fishing:set_id": {
+    "criteria": {
+      "join_world": "2023-12-26 14:39:59 -0500"
+    },
+    "done": true
+  },
+  "gm4:pig_tractors": {
+    "criteria": {
+      "ride_pig_tractor": "2023-12-26 16:51:37 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/crimson_sign": {
+    "criteria": {
+      "has_planks": "2023-12-26 16:58:34 -0500"
+    },
+    "done": true
+  },
   "DataVersion": 3465
 }

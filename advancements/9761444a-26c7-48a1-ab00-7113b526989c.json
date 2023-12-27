@@ -1609,5 +1609,11 @@
     },
     "done": true
   },
+  "gm4_end_fishing:set_id": {
+    "criteria": {
+      "join_world": "2023-12-26 20:29:56 -0500"
+    },
+    "done": true
+  },
   "DataVersion": 3465
 }
