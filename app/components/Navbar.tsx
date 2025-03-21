@@ -14,6 +14,7 @@ export default function Navbar() {
               width={36} 
               height={36}
               className="rounded-lg"
+              priority
             />
             <span className="font-bold text-lg text-purple-700 dark:text-purple-300">AuraMatch</span>
           </div>
