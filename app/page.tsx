@@ -260,7 +260,7 @@ export default function Home(): JSX.Element {
             {/* Logo and Brand */}
             <div className="flex items-center space-x-3">
               <Image 
-                src="logo-placeholder.png" 
+                src="/logo.png" 
                 alt="AuraMatch" 
                 width={36} 
                 height={36}
@@ -302,7 +302,7 @@ export default function Home(): JSX.Element {
             <div className="relative w-24 h-24">
               <div className="absolute inset-0 bg-purple-500 rounded-full opacity-20 animate-pulse"></div>
               <Image 
-                src="logo-placeholder.png" 
+                src="/logo.png" 
                 alt="AuraMatch" 
                 width={96} 
                 height={96}
