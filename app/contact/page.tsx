@@ -1,12 +1,12 @@
 export default function Contact() {
   return (
-    <div className="max-w-4xl mx-auto pt-20">
+    <div className="max-w-4xl mx-auto pt-20 text-white">
       <h1 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-800">
         Contact Us
       </h1>
       
-      <div className="bg-white p-8 rounded-lg shadow-lg mb-12">
-        <p className="text-lg text-gray-700 mb-8 text-center">
+      <div className="bg-gray-800 p-8 rounded-lg shadow-lg mb-12 border border-gray-700">
+        <p className="text-lg text-gray-300 mb-8 text-center">
           Ready to discover the perfect match for your brand or showcase your unique influencer vibe? 
           Get in touch with our team today.
         </p>
@@ -78,22 +78,22 @@ export default function Contact() {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+        <div className="bg-gray-800 p-6 rounded-lg shadow-md text-center border border-gray-700">
           <div className="text-purple-600 text-3xl mb-3">📍</div>
           <h3 className="font-semibold text-lg mb-2">Our Location</h3>
-          <p className="text-gray-600">123 Innovation Way<br />Digital District, CA 94103</p>
+          <p className="text-gray-300">123 Innovation Way<br />Digital District, CA 94103</p>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+        <div className="bg-gray-800 p-6 rounded-lg shadow-md text-center border border-gray-700">
           <div className="text-purple-600 text-3xl mb-3">📧</div>
           <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-          <p className="text-gray-600">hello@auramatch.com<br />support@auramatch.com</p>
+          <p className="text-gray-300">hello@auramatch.com<br />support@auramatch.com</p>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+        <div className="bg-gray-800 p-6 rounded-lg shadow-md text-center border border-gray-700">
           <div className="text-purple-600 text-3xl mb-3">📱</div>
           <h3 className="font-semibold text-lg mb-2">Call Us</h3>
-          <p className="text-gray-600">(555) 123-4567<br />Mon-Fri, 9am-5pm PST</p>
+          <p className="text-gray-300">(555) 123-4567<br />Mon-Fri, 9am-5pm PST</p>
         </div>
       </div>
     </div>

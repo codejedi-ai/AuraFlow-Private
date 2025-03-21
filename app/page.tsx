@@ -13,7 +13,7 @@ export default function Home(): JSX.Element {
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-800">
                 Welcome to AuraMatch
               </h1>
-              <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl">
+              <p className="mx-auto max-w-[700px] text-gray-300 md:text-xl">
                 Where influencer vibes meet brand identities to create authentic, transformative partnerships.
               </p>
             </div>
@@ -29,12 +29,12 @@ export default function Home(): JSX.Element {
         </div>
       </section>
 
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-700">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">The Essence of Connection</h2>
-              <p className="text-gray-600 md:text-lg">
+              <p className="text-gray-300 md:text-lg">
                 At AuraMatch, we believe that the essence of connection lies in synergy—where the vibrant energy of an influencer's unique "vibe" meets the grounded strength of a brand's "identity."
               </p>
               <Link 
@@ -60,34 +60,34 @@ export default function Home(): JSX.Element {
         <div className="container px-4 md:px-6">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Find Your Perfect Match</h2>
-            <p className="mx-auto max-w-[700px] text-gray-600 md:text-lg mt-4">
+            <p className="mx-auto max-w-[700px] text-gray-300 md:text-lg mt-4">
               Our platform helps brands and influencers create meaningful partnerships based on shared values and authentic connections.
             </p>
           </div>
           
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
               <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-purple-600 text-xl">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Define Your Identity</h3>
-              <p className="text-gray-600">Share your brand's story, values, and mission to help us understand your unique identity.</p>
+              <p className="text-gray-300">Share your brand's story, values, and mission to help us understand your unique identity.</p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
               <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-indigo-600 text-xl">2</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Discover Aligned Vibes</h3>
-              <p className="text-gray-600">Our algorithm matches you with influencers whose personal ethos resonates with your brand.</p>
+              <p className="text-gray-300">Our algorithm matches you with influencers whose personal ethos resonates with your brand.</p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
               <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-purple-600 text-xl">3</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Create Authentic Partnerships</h3>
-              <p className="text-gray-600">Build meaningful relationships that amplify both your brand and the influencer's unique voice.</p>
+              <p className="text-gray-300">Build meaningful relationships that amplify both your brand and the influencer's unique voice.</p>
             </div>
           </div>
           
