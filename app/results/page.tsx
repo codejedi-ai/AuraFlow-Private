@@ -51,7 +51,31 @@ export default function Results(): JSX.Element {
     }
   }, []);
 
-  const handleGenerateReport = () => {
+  const handleGenerateReport = async () => {
+    try {
+      // Send the form data to the backend
+      if (formData) {
+        console.log('Sending form data to backend for report generation:', formData);
+        
+        const response = await fetch('/api/report', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            formData,
+            matches
+          }),
+        });
+        
+        const data = await response.json();
+        console.log('Report generation response:', data);
+      }
+    } catch (error) {
+      console.error('Error generating report:', error);
+    }
+    
+    // Show thank you modal
     setShowThankYou(true);
     setTimeout(() => {
       setShowThankYou(false);
@@ -207,6 +231,16 @@ export default function Results(): JSX.Element {
                   We're still developing our AI-powered report generation feature. 
                   Stay tuned for this exciting capability in the near future!
                 </p>
+                <div className="bg-gray-700 p-4 rounded-lg mb-6 text-left">
+                  <p className="text-sm text-gray-300 mb-2">
+                    <span className="font-semibold">Form data sent to backend:</span>
+                  </p>
+                  <p className="text-xs text-gray-400">
+                    Brand: {formData?.brand ? (formData.brand.length > 50 ? formData.brand.substring(0, 50) + '...' : formData.brand) : 'N/A'}<br />
+                    Values: {formData?.brandValues?.join(', ') || 'N/A'}<br />
+                    Matches: {matches.length}
+                  </p>
+                </div>
                 <button 
                   onClick={() => setShowThankYou(false)}
                   className="px-5 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 font-medium transition-colors"
