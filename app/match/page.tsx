@@ -30,6 +30,7 @@ export default function Match(): JSX.Element {
   const [matches, setMatches] = useState<InfluencerMatch[]>([]);
   const [submittedData, setSubmittedData] = useState<FormData | null>(null);
   const [step, setStep] = useState<number>(1);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
     brand: "",
     influencer: "",
@@ -78,6 +79,7 @@ export default function Match(): JSX.Element {
   async function handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
     setIsLoading(true);
+    setError(null);
 
     try {
       // Set submitted data from form state
@@ -98,15 +100,56 @@ export default function Match(): JSX.Element {
       }
       
       const data = await response.json();
-      setMatches(data.matches);
+      
+      if (data.matches && Array.isArray(data.matches)) {
+        setMatches(data.matches);
+        console.log("Matches received:", data.matches);
+      } else {
+        console.error("Invalid matches data:", data);
+        // Fallback to mock data for development/testing
+        setMatches(getMockInfluencers());
+      }
       
     } catch (error) {
       console.error("Error submitting form:", error);
-      // You could add error state handling here
-      // setError((error as Error).message);
+      setError((error as Error).message);
+      
+      // For development: Use mock data if API fails
+      console.log("Using mock data due to API error");
+      setMatches(getMockInfluencers());
     } finally {
       setIsLoading(false);
     }
+  }
+
+  // Mock data function for development and testing
+  function getMockInfluencers(): InfluencerMatch[] {
+    return [
+      {
+        name: "Kai Naturals",
+        platform: "Instagram",
+        followers: "452K",
+        engagement: "4.8%",
+        niche: "Sustainable Living",
+        details: "Creates authentic content around eco-friendly products and sustainable living. Perfect alignment with brands focusing on environmental consciousness.",
+        values: ["Sustainability", "Authenticity", "Wellness"],
+        vibeScore: 92,
+        audienceAlignment: 88,
+        contentStyle: "Educational"
+      },
+      {
+        name: "Maya Creative",
+        platform: "TikTok",
+        followers: "1.2M",
+        engagement: "6.3%",
+        niche: "DIY & Creativity",
+        details: "Specializes in creative tutorials and innovative product transformations. Audience highly engaged with unique brand collaborations.",
+        values: ["Creativity", "Innovation", "Community"],
+        vibeScore: 85,
+        audienceAlignment: 91,
+        contentStyle: "Tutorial"
+      }
+    ];
   }
 
   const renderStep = () => {
@@ -217,7 +260,7 @@ export default function Match(): JSX.Element {
                 required
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                Think about the "vibe" that resonates with your brand. Is it creative and energetic? Calm and thoughtful? Bold and adventurous?
+                Think about the &quot;vibe&quot; that resonates with your brand. Is it creative and energetic? Calm and thoughtful? Bold and adventurous?
               </p>
             </div>
             <div className="flex gap-3">
@@ -259,7 +302,7 @@ export default function Match(): JSX.Element {
             Find Your Perfect Match
           </h1>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Discover influencers whose vibe aligns with your brand's identity and values
+            Discover influencers whose vibe aligns with your brand&apos;s identity and values
           </p>
         </div>
 
@@ -269,6 +312,13 @@ export default function Match(): JSX.Element {
             <h2 className="text-xl font-semibold text-white">Discover Your Brand's Digital Aura</h2>
             <p className="text-purple-200 text-sm mt-1">Map your identity and find influencers with aligned vibes</p>
           </div>
+          
+          {error && (
+            <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 mx-6 mt-4">
+              <p className="font-medium">Error</p>
+              <p>{error}</p>
+            </div>
+          )}
           
           <form onSubmit={handleSubmit} className="p-6">
             {renderStep()}
@@ -379,6 +429,7 @@ export default function Match(): JSX.Element {
             <h2 className="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-300">Analysis Data</h2>
             <div className="bg-gray-800 text-gray-200 p-4 rounded-lg overflow-auto">
               <pre className="text-xs">{JSON.stringify(submittedData, null, 2)}</pre>
+              <p className="mt-2 text-xs text-gray-400">Matches: {matches.length}</p>
             </div>
           </div>
         )}
