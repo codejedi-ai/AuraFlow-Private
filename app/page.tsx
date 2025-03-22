@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 
 export default function Home(): JSX.Element {
@@ -11,7 +11,7 @@ export default function Home(): JSX.Element {
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-800">
-                Welcome to AuraMatch
+                Welcome to AuraFlow
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-300 md:text-xl">
                 Where influencer vibes meet brand identities to create authentic, transformative partnerships.
@@ -35,7 +35,7 @@ export default function Home(): JSX.Element {
             <div className="space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">The Essence of Connection</h2>
               <p className="text-gray-300 md:text-lg">
-                At AuraMatch, we believe that the essence of connection lies in synergy—where the vibrant energy of an influencer's unique "vibe" meets the grounded strength of a brand's "identity."
+                At AuraFlow, we believe that the essence of connection lies in synergy—where the vibrant energy of an influencer&#39;s unique &quot;vibe&quot; meets the grounded strength of a brand&#39;s &quot;identity.&quot;
               </p>
               <Link 
                 href="/synergy" 
@@ -71,7 +71,7 @@ export default function Home(): JSX.Element {
                 <span className="text-purple-600 text-xl">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Define Your Identity</h3>
-              <p className="text-gray-300">Share your brand's story, values, and mission to help us understand your unique identity.</p>
+              <p className="text-gray-300">Share your brand&#39;s story, values, and mission to help us understand your unique identity.</p>
             </div>
             
             <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
@@ -87,7 +87,7 @@ export default function Home(): JSX.Element {
                 <span className="text-purple-600 text-xl">3</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Create Authentic Partnerships</h3>
-              <p className="text-gray-300">Build meaningful relationships that amplify both your brand and the influencer's unique voice.</p>
+              <p className="text-gray-300">Build meaningful relationships that amplify both your brand and the influencer&apos;s unique voice.</p>
             </div>
           </div>
           

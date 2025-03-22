@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AuraMatch - Connecting Influencers and Brands",
-  description: "AuraMatch connects the expressive energy of influencers with the intentional vision of brands.",
+  title: "AuraFlow - Connecting Influencers and Brands",
+  description: "AuraFlow connects the expressive energy of influencers with the intentional vision of brands.",
 };
 
 export default function RootLayout({
@@ -35,7 +35,7 @@ export default function RootLayout({
         </main>
         <footer className="bg-gray-800 text-white p-6 mt-12">
           <div className="container mx-auto text-center">
-            <p>© {new Date().getFullYear()} AuraMatch. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} AuraFlow. All rights reserved.</p>
             <p className="mt-2 text-gray-400 text-sm">Connecting influencer vibes with brand identities.</p>
           </div>
         </footer>

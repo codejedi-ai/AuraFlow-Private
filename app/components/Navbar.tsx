@@ -9,14 +9,14 @@ export default function Navbar() {
           {/* Logo and Brand */}
           <div className="flex items-center space-x-3">
             <Image 
-              src="/logo.png" 
-              alt="AuraMatch" 
+              src="/logo.jpg" 
+              alt="AuraFlow" 
               width={36} 
               height={36}
               className="rounded-lg"
               priority
             />
-            <span className="font-bold text-lg text-purple-700 dark:text-purple-300">AuraMatch</span>
+            <span className="font-bold text-lg text-purple-700 dark:text-purple-300">AuraFlow</span>
           </div>
           
           {/* Navigation Links */}

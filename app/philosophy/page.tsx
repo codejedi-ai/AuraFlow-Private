@@ -7,7 +7,7 @@ export default function Philosophy() {
       
       <div className="prose lg:prose-xl mx-auto">
         <p className="text-lg leading-relaxed mb-6 text-gray-300">
-          At AuraMatch, we believe that the essence of connection lies in synergy—where the vibrant energy of an influencer's unique "vibe" meets the grounded strength of a brand's "identity." Influencers do more than create content; they emanate a personal ethos, a set of feelings, and an atmosphere that resonates with their audience.
+          At AuraFlow, we believe that the essence of connection lies in synergy—where the vibrant energy of an influencer's unique "vibe" meets the grounded strength of a brand's "identity." Influencers do more than create content; they emanate a personal ethos, a set of feelings, and an atmosphere that resonates with their audience.
         </p>
         
         <p className="text-lg leading-relaxed mb-6 text-gray-300">
@@ -21,11 +21,11 @@ export default function Philosophy() {
         </div>
         
         <p className="text-lg leading-relaxed mb-6 text-gray-300">
-          AuraMatch seeks to capture this harmony, connecting the expressive energy of influencers with the intentional vision of brands. We recognize that every influencer offers a unique spectrum of emotions, creativity, and authenticity—an aura that shapes how they are perceived.
+          AuraFlow seeks to capture this harmony, connecting the expressive energy of influencers with the intentional vision of brands. We recognize that every influencer offers a unique spectrum of emotions, creativity, and authenticity—an aura that shapes how they are perceived.
         </p>
         
         <p className="text-lg leading-relaxed text-gray-300">
-          Our platform thrives on the belief that partnerships must be meaningful and authentic. AuraMatch is not merely about bridging gaps; it is about weaving relationships where identity and vibe amplify each other, creating collaborations that stand out and leave a lasting impact.
+          Our platform thrives on the belief that partnerships must be meaningful and authentic. AuraFlow is not merely about bridging gaps; it is about weaving relationships where identity and vibe amplify each other, creating collaborations that stand out and leave a lasting impact.
         </p>
       </div>
     </div>
