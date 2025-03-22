@@ -57,7 +57,7 @@ export default function Contact() {
           <div>
             <label className="flex items-center">
               <input type="checkbox" className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded" />
-              <span className="ml-2 text-sm text-gray-600">I'm an influencer looking to connect with brands</span>
+              <span className="ml-2 text-sm text-gray-600">I&apos;m an influencer looking to connect with brands</span>
             </label>
             
             <label className="flex items-center mt-2">
@@ -87,7 +87,7 @@ export default function Contact() {
         <div className="bg-gray-800 p-6 rounded-lg shadow-md text-center border border-gray-700">
           <div className="text-purple-600 text-3xl mb-3">📧</div>
           <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-          <p className="text-gray-300">hello@auramatch.com<br />support@auramatch.com</p>
+          <p className="text-gray-300">hello@AuraFlow.com<br />support@AuraFlow.com</p>
         </div>
         
         <div className="bg-gray-800 p-6 rounded-lg shadow-md text-center border border-gray-700">
