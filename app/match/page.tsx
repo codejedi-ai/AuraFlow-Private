@@ -104,8 +104,12 @@ export default function Match(): JSX.Element {
         generatedMatches.push(getMockInfluencer(i, randomValue));
       }
       
-      setMatches(generatedMatches);
-      console.log(`Generated ${matchCount} matches with score factor ${randomValue}`);
+      // Store the matches in localStorage for the results page
+      localStorage.setItem('matchResults', JSON.stringify(generatedMatches));
+      localStorage.setItem('formData', JSON.stringify(formData));
+      
+      // Redirect to results page
+      window.location.href = '/results';
       
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -113,7 +117,12 @@ export default function Match(): JSX.Element {
       
       // Still show some matches even when there's an error
       const fallbackMatches = getMockInfluencers();
-      setMatches(fallbackMatches);
+      localStorage.setItem('matchResults', JSON.stringify(fallbackMatches));
+      localStorage.setItem('formData', JSON.stringify(formData));
+      localStorage.setItem('matchError', (error as Error).message);
+      
+      // Redirect to results page even with error
+      window.location.href = '/results';
     } finally {
       setIsLoading(false);
     }
