@@ -85,70 +85,96 @@ export default function Match(): JSX.Element {
       // Set submitted data from form state
       setSubmittedData(formData);
       
-      // Call the API endpoint
-      const response = await fetch('/api/influencers/match', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // Simulate API call with a delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to fetch influencer matches');
+      // Generate a random number between 1 and 10
+      const randomValue = Math.floor(Math.random() * 10) + 1;
+      
+      // If random value is less than 3, simulate an error (30% chance)
+      if (randomValue < 3) {
+        throw new Error(`API Error: Connection timed out (Error code: ${randomValue}00)`);
       }
       
-      const data = await response.json();
+      // Generate between 1-3 matches based on the random value
+      const matchCount = Math.max(1, Math.floor(randomValue / 4));
+      const generatedMatches = [];
       
-      if (data.matches && Array.isArray(data.matches)) {
-        setMatches(data.matches);
-        console.log("Matches received:", data.matches);
-      } else {
-        console.error("Invalid matches data:", data);
-        // Fallback to mock data for development/testing
-        setMatches(getMockInfluencers());
+      for (let i = 0; i < matchCount; i++) {
+        generatedMatches.push(getMockInfluencer(i, randomValue));
       }
+      
+      setMatches(generatedMatches);
+      console.log(`Generated ${matchCount} matches with score factor ${randomValue}`);
       
     } catch (error) {
       console.error("Error submitting form:", error);
       setError((error as Error).message);
       
-      // For development: Use mock data if API fails
-      console.log("Using mock data due to API error");
-      setMatches(getMockInfluencers());
+      // Still show some matches even when there's an error
+      const fallbackMatches = getMockInfluencers();
+      setMatches(fallbackMatches);
     } finally {
       setIsLoading(false);
     }
   }
 
+  // Generate a single mock influencer with dynamic values
+  function getMockInfluencer(index: number, scoreFactor: number): InfluencerMatch {
+    const platforms = ["Instagram", "TikTok", "YouTube", "LinkedIn", "Twitter"];
+    const niches = ["Sustainable Living", "DIY & Creativity", "Tech Reviews", "Fashion & Style", "Fitness & Wellness"];
+    const contentStyles = ["Educational", "Tutorial", "Lifestyle", "Review", "Storytelling"];
+    const allValues = [
+      "Sustainability", "Authenticity", "Wellness", "Creativity", "Innovation", 
+      "Community", "Empowerment", "Education", "Adventure", "Minimalism", "Luxury"
+    ];
+    
+    // Select 2-4 random values
+    const shuffledValues = [...allValues].sort(() => 0.5 - Math.random());
+    const selectedValues = shuffledValues.slice(0, Math.floor(Math.random() * 3) + 2);
+    
+    // Generate follower count (100K - 5M)
+    const followerBase = Math.floor(Math.random() * 50) + 1;
+    const followerUnit = Math.random() > 0.7 ? "M" : "K";
+    const followers = followerUnit === "M" 
+      ? (followerBase / 10).toFixed(1) + "M"
+      : (followerBase * 100) + "K";
+    
+    // Generate engagement rate (1.5% - 8.5%)
+    const engagement = (Math.random() * 7 + 1.5).toFixed(1) + "%";
+    
+    // Names based on index
+    const names = [
+      "Kai Naturals", "Maya Creative", "Echo Studios", "Zephyr Digital", 
+      "Nova Insights", "Pulse Media", "Aura Collective", "Vibe Creators"
+    ];
+    
+    // Calculate scores based on the score factor (1-10)
+    const baseVibeScore = 60 + (scoreFactor * 4);
+    const vibeScore = Math.min(98, Math.max(65, baseVibeScore + (Math.random() * 10 - 5)));
+    
+    const baseAudienceScore = 55 + (scoreFactor * 4);
+    const audienceAlignment = Math.min(97, Math.max(60, baseAudienceScore + (Math.random() * 10 - 5)));
+    
+    return {
+      name: names[index % names.length],
+      platform: platforms[index % platforms.length],
+      followers: followers,
+      engagement: engagement,
+      niche: niches[Math.floor(Math.random() * niches.length)],
+      details: `Creates engaging content that resonates with audiences looking for ${selectedValues.join(", ")} focused material. ${vibeScore > 85 ? "Perfect alignment" : "Good match"} with brands emphasizing similar values.`,
+      values: selectedValues,
+      vibeScore: Math.round(vibeScore),
+      audienceAlignment: Math.round(audienceAlignment),
+      contentStyle: contentStyles[Math.floor(Math.random() * contentStyles.length)]
+    };
+  }
+  
   // Mock data function for development and testing
   function getMockInfluencers(): InfluencerMatch[] {
     return [
-      {
-        name: "Kai Naturals",
-        platform: "Instagram",
-        followers: "452K",
-        engagement: "4.8%",
-        niche: "Sustainable Living",
-        details: "Creates authentic content around eco-friendly products and sustainable living. Perfect alignment with brands focusing on environmental consciousness.",
-        values: ["Sustainability", "Authenticity", "Wellness"],
-        vibeScore: 92,
-        audienceAlignment: 88,
-        contentStyle: "Educational"
-      },
-      {
-        name: "Maya Creative",
-        platform: "TikTok",
-        followers: "1.2M",
-        engagement: "6.3%",
-        niche: "DIY & Creativity",
-        details: "Specializes in creative tutorials and innovative product transformations. Audience highly engaged with unique brand collaborations.",
-        values: ["Creativity", "Innovation", "Community"],
-        vibeScore: 85,
-        audienceAlignment: 91,
-        contentStyle: "Tutorial"
-      }
+      getMockInfluencer(0, 9),
+      getMockInfluencer(1, 8)
     ];
   }
 
@@ -314,9 +340,15 @@ export default function Match(): JSX.Element {
           </div>
           
           {error && (
-            <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 mx-6 mt-4">
-              <p className="font-medium">Error</p>
+            <div className="bg-red-900 border border-red-600 text-red-200 p-4 mb-4 mx-6 mt-4 rounded-md">
+              <div className="flex items-center mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="font-medium text-red-300">API Error Detected</p>
+              </div>
               <p>{error}</p>
+              <p className="mt-2 text-sm text-red-300">Showing fallback matches below. Please try again later.</p>
             </div>
           )}
           
@@ -328,9 +360,14 @@ export default function Match(): JSX.Element {
         {/* Results Section */}
         {matches.length > 0 && (
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-purple-800 dark:text-purple-300 mb-6 text-center">
-              Influencers with Matching Vibes
-            </h2>
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-purple-300 mb-2">
+                Influencers with Matching Vibes
+              </h2>
+              <p className="text-gray-400">
+                Found {matches.length} {matches.length === 1 ? 'influencer' : 'influencers'} that {matches.length === 1 ? 'matches' : 'match'} your brand's identity
+              </p>
+            </div>
             <div className="space-y-6">
               {matches.map((match, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all hover:shadow-lg">
