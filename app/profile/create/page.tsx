@@ -1,4 +1,3 @@
-"use client"
 import { verifySession } from "@/lib/dal"
 import ProfileForm from "./profile-form"
 
