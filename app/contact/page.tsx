@@ -210,9 +210,9 @@ export default function Contact() {
           <div className="text-purple-600 text-3xl mb-3">📧</div>
           <h3 className="font-semibold text-lg mb-2">Email Us</h3>
           <p className="text-gray-300">
-            hello@vibescope.com
+            hello@aurasight.com
             <br />
-            support@vibescope.com
+            support@aurasight.com
           </p>
         </div>
 
@@ -227,8 +227,8 @@ export default function Contact() {
         </div>
       </div>
       <footer className="text-center text-gray-500 py-4">
-        <p>© {new Date().getFullYear()} VibeScope. All rights reserved.</p>
-        <p className="mt-2 text-gray-400 text-sm">Tracking influencer auras and optimizing brand resonance.</p>
+        <p>© {new Date().getFullYear()} AuraSight. All rights reserved.</p>
+        <p className="mt-2 text-gray-400 text-sm">AuraSight tracks influencer auras and optimizing brand resonance.</p>
       </footer>
     </div>
   )

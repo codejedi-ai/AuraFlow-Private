@@ -8,8 +8,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo and Brand */}
           <div className="flex items-center space-x-3">
-            <Image src="/logo.png" alt="VibeScope" width={36} height={36} className="rounded-lg" priority />
-            <span className="font-bold text-lg text-purple-700 dark:text-purple-300">VibeScope</span>
+            <Image src="/logo.png" alt="AuraSight" width={36} height={36} className="rounded-lg" priority />
+            <span className="font-bold text-lg text-purple-700 dark:text-purple-300">AuraSight</span>
           </div>
 
           {/* Navigation Links */}
