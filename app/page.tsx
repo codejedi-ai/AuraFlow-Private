@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
 // import Image from "next/image";
-import Link from "next/link";
+import Link from "next/link"
 
 export default function Home(): JSX.Element {
   return (
@@ -11,15 +11,16 @@ export default function Home(): JSX.Element {
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-800">
-                Welcome to AuraFlow
+                Welcome to VibeScope
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-300 md:text-xl">
-                Where influencer vibes meet brand identities to create authentic, transformative partnerships.
+                The ultimate influencer aura management platform. Track vibes, analyze brand resonance, and discover the
+                perfect energy for your marketing campaigns.
               </p>
             </div>
             <div className="space-x-4">
-              <Link 
-                href="/philosophy" 
+              <Link
+                href="/philosophy"
                 className="inline-flex h-10 items-center justify-center rounded-md bg-purple-600 px-8 text-sm font-medium text-white shadow transition-colors hover:bg-purple-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-purple-700"
               >
                 Discover Our Philosophy
@@ -35,10 +36,12 @@ export default function Home(): JSX.Element {
             <div className="space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">The Essence of Connection</h2>
               <p className="text-gray-300 md:text-lg">
-                At AuraFlow, we believe that the essence of connection lies in synergy—where the vibrant energy of an influencer&#39;s unique &quot;vibe&quot; meets the grounded strength of a brand&#39;s &quot;identity.&quot;
+                At AuraFlow, we believe that the essence of connection lies in synergy—where the vibrant energy of an
+                influencer&#39;s unique &quot;vibe&quot; meets the grounded strength of a brand&#39;s
+                &quot;identity.&quot;
               </p>
-              <Link 
-                href="/synergy" 
+              <Link
+                href="/synergy"
                 className="inline-flex h-10 items-center justify-center rounded-md bg-indigo-600 px-8 text-sm font-medium text-white shadow transition-colors hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-700"
               >
                 Learn More
@@ -61,39 +64,46 @@ export default function Home(): JSX.Element {
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Find Your Perfect Match</h2>
             <p className="mx-auto max-w-[700px] text-gray-300 md:text-lg mt-4">
-              Our platform helps brands and influencers create meaningful partnerships based on shared values and authentic connections.
+              Our platform helps brands and influencers create meaningful partnerships based on shared values and
+              authentic connections.
             </p>
           </div>
-          
+
           <div className="grid gap-6 md:grid-cols-3">
             <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
               <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-purple-600 text-xl">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Define Your Identity</h3>
-              <p className="text-gray-300">Share your brand&#39;s story, values, and mission to help us understand your unique identity.</p>
+              <p className="text-gray-300">
+                Share your brand&#39;s story, values, and mission to help us understand your unique identity.
+              </p>
             </div>
-            
+
             <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
               <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-indigo-600 text-xl">2</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Discover Aligned Vibes</h3>
-              <p className="text-gray-300">Our algorithm matches you with influencers whose personal ethos resonates with your brand.</p>
+              <p className="text-gray-300">
+                Our algorithm matches you with influencers whose personal ethos resonates with your brand.
+              </p>
             </div>
-            
+
             <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
               <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-purple-600 text-xl">3</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Create Authentic Partnerships</h3>
-              <p className="text-gray-300">Build meaningful relationships that amplify both your brand and the influencer&apos;s unique voice.</p>
+              <p className="text-gray-300">
+                Build meaningful relationships that amplify both your brand and the influencer&apos;s unique voice.
+              </p>
             </div>
           </div>
-          
+
           <div className="text-center mt-10">
-            <Link 
-              href="/match" 
+            <Link
+              href="/match"
               className="inline-flex h-12 items-center justify-center rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 px-10 text-sm font-medium text-white shadow transition-colors hover:from-purple-700 hover:to-indigo-700"
             >
               Start Matching Now
@@ -102,5 +112,5 @@ export default function Home(): JSX.Element {
         </div>
       </section>
     </div>
-  );
+  )
 }
