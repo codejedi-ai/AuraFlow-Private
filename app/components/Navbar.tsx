@@ -46,7 +46,7 @@ export default function Navbar() {
           {/* Action Button */}
           <div>
             <Link
-              href="/match"
+              href="/auth/signin"
               className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
               Get Started
