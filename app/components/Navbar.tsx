@@ -1,7 +1,11 @@
 import Link from "next/link"
 import Image from "next/image"
+import { getSession } from "@/lib/auth"
+import { signOut } from "@/app/actions/auth"
 
-export default function Navbar() {
+export default async function Navbar() {
+  const session = await getSession()
+
   return (
     <header className="fixed top-0 left-0 right-0 bg-gray-900 shadow-md z-50">
       <div className="container mx-auto px-4">
@@ -44,13 +48,27 @@ export default function Navbar() {
           </nav>
 
           {/* Action Button */}
-          <div>
-            <Link
-              href="/auth/signin"
-              className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-            >
-              Get Started
-            </Link>
+          <div className="flex items-center space-x-4">
+            {session?.userId ? (
+              <>
+                <span className="text-gray-300 text-sm">Welcome, {session.firstName || session.email}</span>
+                <form action={signOut}>
+                  <button
+                    type="submit"
+                    className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                  >
+                    Sign Out
+                  </button>
+                </form>
+              </>
+            ) : (
+              <Link
+                href="/auth/signin"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              >
+                Get Started
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}

@@ -2,7 +2,7 @@ import { SignJWT, jwtVerify } from "jose"
 import { cookies } from "next/headers"
 import { type NextRequest, NextResponse } from "next/server"
 
-const secretKey = process.env.AUTH_SECRET || "your-secret-key"
+const secretKey = process.env.AUTH_SECRET || "your-secret-key-must-be-at-least-32-characters-long"
 const key = new TextEncoder().encode(secretKey)
 
 export interface SessionPayload {
@@ -19,6 +19,10 @@ export async function encrypt(payload: SessionPayload) {
 }
 
 export async function decrypt(input: string): Promise<SessionPayload | null> {
+  if (!input || input.trim() === "") {
+    return null
+  }
+
   try {
     const { payload } = await jwtVerify(input, key, {
       algorithms: ["HS256"],
@@ -58,15 +62,22 @@ export async function getSession(): Promise<SessionPayload | null> {
 
 export async function updateSession(request: NextRequest) {
   const session = request.cookies.get("session")?.value
-  if (!session) return
+  if (!session) return NextResponse.next()
 
   const parsed = await decrypt(session)
-  if (!parsed) return
+  if (!parsed) {
+    // If session is invalid, clear the cookie
+    const response = NextResponse.next()
+    response.cookies.delete("session")
+    return response
+  }
 
+  // Refresh the session
   const res = NextResponse.next()
+  const newSession = await encrypt(parsed)
   res.cookies.set({
     name: "session",
-    value: await encrypt(parsed),
+    value: newSession,
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),

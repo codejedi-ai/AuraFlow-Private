@@ -14,16 +14,21 @@ export const verifySession = cache(async () => {
 })
 
 export async function getUser() {
-  const session = await verifySession()
-  if (!session) return null
+  try {
+    const session = await getSession()
+    if (!session?.userId) return null
 
-  // In a real app, you would fetch user data from your database
-  // For now, we'll return the session data
-  return {
-    id: session.userId,
-    email: session.session.email,
-    firstName: session.session.firstName,
-    lastName: session.session.lastName,
-    accountType: session.session.accountType,
+    // In a real app, you would fetch user data from your database
+    // For now, we'll return the session data
+    return {
+      id: session.userId,
+      email: session.email,
+      firstName: session.firstName,
+      lastName: session.lastName,
+      accountType: session.accountType,
+    }
+  } catch (error) {
+    console.error("Error getting user:", error)
+    return null
   }
 }

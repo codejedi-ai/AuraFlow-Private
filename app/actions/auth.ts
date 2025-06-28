@@ -17,6 +17,16 @@ const users = new Map<
   }
 >()
 
+// Add a default test user for demo purposes
+users.set("test@example.com", {
+  id: "test-user-id",
+  email: "test@example.com",
+  password: "password123",
+  firstName: "Test",
+  lastName: "User",
+  accountType: "brand",
+})
+
 const signInSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(1, "Password is required"),
@@ -36,7 +46,7 @@ const signUpSchema = z
     path: ["confirmPassword"],
   })
 
-export async function signIn(formData: FormData) {
+export async function signIn(prevState: any, formData: FormData) {
   const validatedFields = signInSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -60,19 +70,28 @@ export async function signIn(formData: FormData) {
     }
   }
 
-  // Create session
-  await createSession({
-    userId: user.id,
-    email: user.email,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    accountType: user.accountType,
-  })
+  try {
+    // Create session
+    await createSession({
+      userId: user.id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      accountType: user.accountType,
+    })
+  } catch (error) {
+    console.error("Error creating session:", error)
+    return {
+      errors: {
+        email: ["Failed to create session. Please try again."],
+      },
+    }
+  }
 
   redirect("/profile/create")
 }
 
-export async function signUp(formData: FormData) {
+export async function signUp(prevState: any, formData: FormData) {
   const validatedFields = signUpSchema.safeParse({
     firstName: formData.get("firstName"),
     lastName: formData.get("lastName"),
@@ -99,35 +118,48 @@ export async function signUp(formData: FormData) {
     }
   }
 
-  // Create user (in a real app, you'd save to your database)
-  const userId = crypto.randomUUID()
-  users.set(email, {
-    id: userId,
-    email,
-    password, // In a real app, you'd hash this password
-    firstName,
-    lastName,
-    accountType,
-  })
+  try {
+    // Create user (in a real app, you'd save to your database)
+    const userId = crypto.randomUUID()
+    users.set(email, {
+      id: userId,
+      email,
+      password, // In a real app, you'd hash this password
+      firstName,
+      lastName,
+      accountType,
+    })
 
-  // Create session
-  await createSession({
-    userId,
-    email,
-    firstName,
-    lastName,
-    accountType,
-  })
+    // Create session
+    await createSession({
+      userId,
+      email,
+      firstName,
+      lastName,
+      accountType,
+    })
+  } catch (error) {
+    console.error("Error creating user:", error)
+    return {
+      errors: {
+        email: ["Failed to create account. Please try again."],
+      },
+    }
+  }
 
   redirect("/profile/create")
 }
 
 export async function signOut() {
-  await deleteSession()
+  try {
+    await deleteSession()
+  } catch (error) {
+    console.error("Error signing out:", error)
+  }
   redirect("/auth/signin")
 }
 
-export async function forgotPassword(formData: FormData) {
+export async function forgotPassword(prevState: any, formData: FormData) {
   const email = formData.get("email") as string
 
   if (!email) {

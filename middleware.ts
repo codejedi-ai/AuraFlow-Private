@@ -17,26 +17,56 @@ const publicRoutes = [
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname
   const isProtectedRoute = protectedRoutes.some((route) => path.startsWith(route))
-  const isPublicRoute = publicRoutes.includes(path)
+  const isPublicRoute = publicRoutes.includes(path) || path.startsWith("/auth")
 
   // Get the session from the cookie
   const cookie = req.cookies.get("session")?.value
-  const session = await decrypt(cookie || "")
+  let session = null
 
-  // Redirect to signin if accessing protected route without session
+  // Only try to decrypt if we have a valid cookie
+  if (cookie && cookie.trim() !== "") {
+    try {
+      session = await decrypt(cookie)
+    } catch (error) {
+      console.error("Middleware: Failed to decrypt session:", error)
+      // Clear invalid session cookie
+      const response = NextResponse.next()
+      response.cookies.delete("session")
+      if (isProtectedRoute) {
+        return NextResponse.redirect(new URL("/auth/signin", req.nextUrl))
+      }
+      return response
+    }
+  }
+
+  // Redirect to signin if accessing protected route without valid session
   if (isProtectedRoute && !session?.userId) {
     return NextResponse.redirect(new URL("/auth/signin", req.nextUrl))
   }
 
-  // Redirect to profile creation if authenticated user tries to access auth pages
-  if (isPublicRoute && session?.userId && path.startsWith("/auth")) {
+  // Redirect authenticated users away from auth pages
+  if (session?.userId && path.startsWith("/auth")) {
     return NextResponse.redirect(new URL("/profile/create", req.nextUrl))
   }
 
-  // Update session if it exists
-  return await updateSession(req)
+  // Update session if it exists and is valid
+  if (session?.userId) {
+    return await updateSession(req)
+  }
+
+  return NextResponse.next()
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public folder files
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.png$|.*\\.jpg$|.*\\.jpeg$|.*\\.gif$|.*\\.svg$).*)",
+  ],
 }
