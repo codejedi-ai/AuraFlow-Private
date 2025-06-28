@@ -1,11 +1,13 @@
 "use client"
 
 import type React from "react"
+
 import { useState, useEffect, type FormEvent } from "react"
 import { useRouter } from "next/navigation"
-import type { JSX } from "react/jsx-runtime" // Import JSX to fix the undeclared variable error
+import { getUser } from "@/lib/dal"
 
-interface UserSession {
+interface UserData {
+  id: string
   email: string
   firstName?: string
   lastName?: string
@@ -13,24 +15,17 @@ interface UserSession {
 }
 
 interface ProfileData {
-  // Basic Info
   displayName: string
   bio: string
   location: string
   website: string
-
-  // Brand/Influencer specific
   accountType: string
-
-  // Brand fields
   companyName: string
   industry: string
   companySize: string
   brandValues: string[]
   missionStatement: string
   targetAudience: string
-
-  // Influencer fields
   platforms: string[]
   followerCount: string
   contentCategories: string[]
@@ -40,9 +35,9 @@ interface ProfileData {
   audienceGender: string
 }
 
-export default function CreateProfile(): JSX.Element {
+export default function CreateProfile() {
   const router = useRouter()
-  const [userSession, setUserSession] = useState<UserSession | null>(null)
+  const [userData, setUserData] = useState<UserData | null>(null)
   const [step, setStep] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
   const [profileData, setProfileData] = useState<ProfileData>({
@@ -109,23 +104,24 @@ export default function CreateProfile(): JSX.Element {
   ]
 
   useEffect(() => {
-    // Check if user is authenticated
-    const session = localStorage.getItem("userSession")
-    if (!session) {
-      router.push("/auth/signin")
-      return
+    async function loadUser() {
+      try {
+        const user = await getUser()
+        if (user) {
+          setUserData(user)
+          setProfileData((prev) => ({
+            ...prev,
+            displayName: user.firstName && user.lastName ? `${user.firstName} ${user.lastName}` : "",
+            accountType: user.accountType || "brand",
+          }))
+        }
+      } catch (error) {
+        console.error("Error loading user:", error)
+        router.push("/auth/signin")
+      }
     }
 
-    const parsedSession = JSON.parse(session)
-    setUserSession(parsedSession)
-
-    // Pre-fill some data from registration
-    setProfileData((prev) => ({
-      ...prev,
-      displayName:
-        parsedSession.firstName && parsedSession.lastName ? `${parsedSession.firstName} ${parsedSession.lastName}` : "",
-      accountType: parsedSession.accountType || "brand",
-    }))
+    loadUser()
   }, [router])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -161,8 +157,8 @@ export default function CreateProfile(): JSX.Element {
       // Simulate API call to save profile
       await new Promise((resolve) => setTimeout(resolve, 1500))
 
-      // Store profile data
-      localStorage.setItem("userProfile", JSON.stringify(profileData))
+      // In a real app, you'd save this to your database
+      console.log("Profile data:", profileData)
 
       // Redirect to the matching page
       router.push("/match")
@@ -582,7 +578,7 @@ export default function CreateProfile(): JSX.Element {
     return ""
   }
 
-  if (!userSession) {
+  if (!userData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">

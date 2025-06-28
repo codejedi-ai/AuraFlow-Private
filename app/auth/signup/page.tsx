@@ -1,74 +1,11 @@
 "use client"
 
-import type React from "react"
-import { useState, type FormEvent } from "react"
+import { useActionState } from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { signUp } from "@/app/actions/auth"
 
-export default function SignUp(): JSX.Element {
-  const router = useRouter()
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    accountType: "brand", // "brand" or "influencer"
-    agreeToTerms: false,
-  })
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
-    }))
-  }
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      // Validation
-      if (formData.password !== formData.confirmPassword) {
-        throw new Error("Passwords don't match")
-      }
-
-      if (formData.password.length < 6) {
-        throw new Error("Password must be at least 6 characters")
-      }
-
-      if (!formData.agreeToTerms) {
-        throw new Error("Please agree to the terms and conditions")
-      }
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      // Store user session
-      localStorage.setItem(
-        "userSession",
-        JSON.stringify({
-          email: formData.email,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          accountType: formData.accountType,
-          signedUpAt: new Date().toISOString(),
-        }),
-      )
-
-      // Redirect to profile creation
-      router.push("/profile/create")
-    } catch (error) {
-      setError((error as Error).message)
-    } finally {
-      setIsLoading(false)
-    }
-  }
+export default function SignUp() {
+  const [state, action, isPending] = useActionState(signUp, undefined)
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-20 pb-12">
@@ -79,13 +16,15 @@ export default function SignUp(): JSX.Element {
         </div>
 
         <div className="bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-700">
-          {error && (
+          {state?.errors && (
             <div className="bg-red-900 border border-red-600 text-red-200 p-4 mb-6 rounded-md">
-              <p>{error}</p>
+              {Object.entries(state.errors).map(([field, errors]) => (
+                <p key={field}>{errors?.[0]}</p>
+              ))}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form action={action} className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-2">
@@ -95,8 +34,6 @@ export default function SignUp(): JSX.Element {
                   type="text"
                   id="firstName"
                   name="firstName"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700 text-white"
                   placeholder="John"
                   required
@@ -110,8 +47,6 @@ export default function SignUp(): JSX.Element {
                   type="text"
                   id="lastName"
                   name="lastName"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700 text-white"
                   placeholder="Doe"
                   required
@@ -127,8 +62,6 @@ export default function SignUp(): JSX.Element {
                 type="email"
                 id="email"
                 name="email"
-                value={formData.email}
-                onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700 text-white"
                 placeholder="your.email@example.com"
                 required
@@ -142,8 +75,6 @@ export default function SignUp(): JSX.Element {
               <select
                 id="accountType"
                 name="accountType"
-                value={formData.accountType}
-                onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700 text-white"
                 required
               >
@@ -160,8 +91,6 @@ export default function SignUp(): JSX.Element {
                 type="password"
                 id="password"
                 name="password"
-                value={formData.password}
-                onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700 text-white"
                 placeholder="Create a strong password"
                 required
@@ -176,8 +105,6 @@ export default function SignUp(): JSX.Element {
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700 text-white"
                 placeholder="Confirm your password"
                 required
@@ -189,8 +116,6 @@ export default function SignUp(): JSX.Element {
                 id="agreeToTerms"
                 name="agreeToTerms"
                 type="checkbox"
-                checked={formData.agreeToTerms}
-                onChange={handleInputChange}
                 className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-600 rounded bg-gray-700"
                 required
               />
@@ -208,10 +133,10 @@ export default function SignUp(): JSX.Element {
 
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isPending}
               className="w-full py-3 px-4 rounded-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? (
+              {isPending ? (
                 <>
                   <svg
                     className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline"

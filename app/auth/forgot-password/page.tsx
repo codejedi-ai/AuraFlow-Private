@@ -1,47 +1,21 @@
 "use client"
 
-import { useState, type FormEvent } from "react"
+import { useState, useActionState } from "react"
 import Link from "next/link"
-import type { JSX } from "react/jsx-runtime" // Declare JSX variable
+import { forgotPassword } from "@/app/actions/auth"
 
-export default function ForgotPassword(): JSX.Element {
-  const [email, setEmail] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
+export default function ForgotPassword() {
+  const [state, action, isPending] = useActionState(forgotPassword, undefined)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [error, setError] = useState<string | null>(null)
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      if (!email) {
-        throw new Error("Please enter your email address")
-      }
-
-      // In a real app, this would send a password reset email
-      setIsSubmitted(true)
-    } catch (error) {
-      setError((error as Error).message)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  if (isSubmitted) {
+  if (state?.success || isSubmitted) {
     return (
       <div className="min-h-screen flex items-center justify-center pt-20">
         <div className="max-w-md w-full space-y-8 p-8">
           <div className="text-center">
             <div className="text-green-400 text-6xl mb-4">✓</div>
             <h2 className="text-3xl font-bold text-white mb-2">Check Your Email</h2>
-            <p className="text-gray-300 mb-6">
-              We've sent a password reset link to <strong>{email}</strong>
-            </p>
+            <p className="text-gray-300 mb-6">We've sent a password reset link to your email address.</p>
             <p className="text-gray-400 text-sm mb-8">Didn't receive the email? Check your spam folder or try again.</p>
             <div className="space-y-4">
               <button
@@ -72,13 +46,15 @@ export default function ForgotPassword(): JSX.Element {
         </div>
 
         <div className="bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-700">
-          {error && (
+          {state?.errors && (
             <div className="bg-red-900 border border-red-600 text-red-200 p-4 mb-6 rounded-md">
-              <p>{error}</p>
+              {Object.entries(state.errors).map(([field, errors]) => (
+                <p key={field}>{errors?.[0]}</p>
+              ))}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form action={action} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                 Email Address
@@ -87,8 +63,6 @@ export default function ForgotPassword(): JSX.Element {
                 type="email"
                 id="email"
                 name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700 text-white"
                 placeholder="your.email@example.com"
                 required
@@ -97,10 +71,10 @@ export default function ForgotPassword(): JSX.Element {
 
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isPending}
               className="w-full py-3 px-4 rounded-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? (
+              {isPending ? (
                 <>
                   <svg
                     className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline"

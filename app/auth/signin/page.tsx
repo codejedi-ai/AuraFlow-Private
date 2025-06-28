@@ -1,58 +1,11 @@
 "use client"
 
-import type React from "react"
-import { useState, type FormEvent } from "react"
+import { useActionState } from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { signIn } from "@/app/actions/auth"
 
-export default function SignIn(): JSX.Element {
-  const router = useRouter()
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  })
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      // For demo purposes, accept any email/password combination
-      if (formData.email && formData.password) {
-        // Store user session (in a real app, this would be handled by your auth system)
-        localStorage.setItem(
-          "userSession",
-          JSON.stringify({
-            email: formData.email,
-            signedInAt: new Date().toISOString(),
-          }),
-        )
-
-        // Redirect to profile creation
-        router.push("/profile/create")
-      } else {
-        throw new Error("Please fill in all fields")
-      }
-    } catch (error) {
-      setError((error as Error).message)
-    } finally {
-      setIsLoading(false)
-    }
-  }
+export default function SignIn() {
+  const [state, action, isPending] = useActionState(signIn, undefined)
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-20">
@@ -63,13 +16,15 @@ export default function SignIn(): JSX.Element {
         </div>
 
         <div className="bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-700">
-          {error && (
+          {state?.errors && (
             <div className="bg-red-900 border border-red-600 text-red-200 p-4 mb-6 rounded-md">
-              <p>{error}</p>
+              {Object.entries(state.errors).map(([field, errors]) => (
+                <p key={field}>{errors?.[0]}</p>
+              ))}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form action={action} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                 Email Address
@@ -78,8 +33,6 @@ export default function SignIn(): JSX.Element {
                 type="email"
                 id="email"
                 name="email"
-                value={formData.email}
-                onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700 text-white"
                 placeholder="your.email@example.com"
                 required
@@ -94,8 +47,6 @@ export default function SignIn(): JSX.Element {
                 type="password"
                 id="password"
                 name="password"
-                value={formData.password}
-                onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700 text-white"
                 placeholder="Enter your password"
                 required
@@ -122,10 +73,10 @@ export default function SignIn(): JSX.Element {
 
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isPending}
               className="w-full py-3 px-4 rounded-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? (
+              {isPending ? (
                 <>
                   <svg
                     className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline"
