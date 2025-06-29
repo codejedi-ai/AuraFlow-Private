@@ -22,6 +22,13 @@ export default function Navbar({ user, signOut }: NavbarProps) {
     }
   }
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <header className="fixed top-0 left-0 right-0 bg-gray-900 shadow-md z-50">
       <div className="container mx-auto px-4">
@@ -36,33 +43,36 @@ export default function Navbar({ user, signOut }: NavbarProps) {
 
           {/* Navigation Links */}
           <nav className="hidden md:flex space-x-8">
-            <Link to="/" className="text-purple-600 dark:text-purple-300 font-medium hover:text-purple-400 transition-colors">
+            <button
+              onClick={() => scrollToSection('home')}
+              className="text-purple-600 dark:text-purple-300 font-medium hover:text-purple-400 transition-colors"
+            >
               Home
-            </Link>
-            <Link
-              to="/philosophy"
+            </button>
+            <button
+              onClick={() => scrollToSection('philosophy')}
               className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
             >
               Philosophy
-            </Link>
-            <Link
-              to="/synergy"
+            </button>
+            <button
+              onClick={() => scrollToSection('synergy')}
               className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
             >
               Vibe & Identity
-            </Link>
-            <Link
-              to="/mission"
+            </button>
+            <button
+              onClick={() => scrollToSection('mission')}
               className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
             >
               Our Mission
-            </Link>
-            <Link
-              to="/contact"
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
               className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
             >
               Contact
-            </Link>
+            </button>
           </nav>
 
           {/* User Menu */}

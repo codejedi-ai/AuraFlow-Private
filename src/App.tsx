@@ -4,10 +4,6 @@ import { getCurrentUser } from 'aws-amplify/auth'
 import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
-import Philosophy from './pages/Philosophy'
-import Synergy from './pages/Synergy'
-import Mission from './pages/Mission'
-import Contact from './pages/Contact'
 import Match from './pages/Match'
 import Results from './pages/Results'
 import Profile from './pages/Profile'
@@ -60,10 +56,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn onSignIn={checkAuthState} />} />
-          <Route path="/philosophy" element={<Philosophy />} />
-          <Route path="/synergy" element={<Synergy />} />
-          <Route path="/mission" element={<Mission />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/match" element={user ? <Match /> : <SignIn onSignIn={checkAuthState} />} />
           <Route path="/results" element={user ? <Results /> : <SignIn onSignIn={checkAuthState} />} />
           <Route path="/profile" element={user ? <Profile user={user} /> : <SignIn onSignIn={checkAuthState} />} />
