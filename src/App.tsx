@@ -8,14 +8,15 @@ import Match from './pages/Match'
 import Results from './pages/Results'
 import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
 
 function App() {
   const [user, setUser] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const location = useLocation()
 
-  // Check if we're on the sign-in page
-  const isSignInPage = location.pathname === '/signin'
+  // Check if we're on the sign-in or sign-up page
+  const isAuthPage = location.pathname === '/signin' || location.pathname === '/signup'
 
   useEffect(() => {
     checkAuthState()
@@ -74,21 +75,22 @@ function App() {
       </div>
       
       <div className="relative z-10">
-        {/* Only show navbar if not on sign-in page */}
-        {!isSignInPage && <Navbar user={user} signOut={handleSignOut} />}
+        {/* Only show navbar if not on auth pages */}
+        {!isAuthPage && <Navbar user={user} signOut={handleSignOut} />}
         
-        <main className={isSignInPage ? "" : "container mx-auto px-4 py-8"}>
+        <main className={isAuthPage ? "" : "container mx-auto px-4 py-8"}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/signin" element={<SignIn onSignIn={checkAuthState} />} />
+            <Route path="/signup" element={<SignUp onSignUp={checkAuthState} />} />
             <Route path="/match" element={user ? <Match /> : <SignIn onSignIn={checkAuthState} />} />
             <Route path="/results" element={user ? <Results /> : <SignIn onSignIn={checkAuthState} />} />
             <Route path="/profile" element={user ? <Profile user={user} /> : <SignIn onSignIn={checkAuthState} />} />
           </Routes>
         </main>
         
-        {/* Only show footer if not on sign-in page */}
-        {!isSignInPage && (
+        {/* Only show footer if not on auth pages */}
+        {!isAuthPage && (
           <footer className="bg-gray-800/80 backdrop-blur-sm text-white p-6 mt-12 border-t border-gray-700/50">
             <div className="container mx-auto text-center">
               <p>© {new Date().getFullYear()} AuraSight. All rights reserved.</p>

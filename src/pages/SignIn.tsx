@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import { signIn, signUp, confirmSignUp, resendSignUpCode } from 'aws-amplify/auth'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useState } from 'react'
+import { signIn } from 'aws-amplify/auth'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 
 interface SignInProps {
   onSignIn: () => void
@@ -9,19 +9,12 @@ interface SignInProps {
 export default function SignIn({ onSignIn }: SignInProps) {
   const navigate = useNavigate()
   const location = useLocation()
-  const [isSignUp, setIsSignUp] = useState(false)
-  const [needsConfirmation, setNeedsConfirmation] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<string | null>(null)
   
   const [formData, setFormData] = useState({
     email: '',
-    password: '',
-    confirmPassword: '',
-    firstName: '',
-    lastName: '',
-    confirmationCode: ''
+    password: ''
   })
 
   // Get the intended destination from location state, default to home
@@ -57,78 +50,6 @@ export default function SignIn({ onSignIn }: SignInProps) {
     }
   }
 
-  const handleSignUp = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError(null)
-
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match')
-      setIsLoading(false)
-      return
-    }
-
-    try {
-      await signUp({
-        username: formData.email,
-        password: formData.password,
-        options: {
-          userAttributes: {
-            email: formData.email,
-            given_name: formData.firstName,
-            family_name: formData.lastName
-          }
-        }
-      })
-      
-      setNeedsConfirmation(true)
-      setSuccess('Account created! Please check your email for a confirmation code.')
-    } catch (error: any) {
-      console.error('Sign up error:', error)
-      setError(error.message || 'Failed to create account')
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const handleConfirmSignUp = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      await confirmSignUp({
-        username: formData.email,
-        confirmationCode: formData.confirmationCode
-      })
-      
-      setSuccess('Email confirmed! You can now sign in.')
-      setNeedsConfirmation(false)
-      setIsSignUp(false)
-      setFormData(prev => ({ ...prev, confirmationCode: '' }))
-    } catch (error: any) {
-      console.error('Confirmation error:', error)
-      setError(error.message || 'Failed to confirm account')
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const handleResendCode = async () => {
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      await resendSignUpCode({ username: formData.email })
-      setSuccess('Confirmation code resent to your email.')
-    } catch (error: any) {
-      console.error('Resend code error:', error)
-      setError(error.message || 'Failed to resend code')
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
   const handleFederatedSignIn = (provider: string) => {
     // TODO: Implement federated sign-in
     console.log(`Sign in with ${provider}`)
@@ -148,7 +69,7 @@ export default function SignIn({ onSignIn }: SignInProps) {
       {/* Header */}
       <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20">
         <h1 className="text-4xl font-bold text-white text-center">
-          Sign {isSignUp ? 'up for' : 'in to'} AuraSight
+          Sign in to AuraSight
         </h1>
       </div>
 
@@ -156,11 +77,11 @@ export default function SignIn({ onSignIn }: SignInProps) {
       <div className="relative z-10 h-full flex items-center justify-center">
         <div className="w-full max-w-6xl mx-auto px-8 flex items-center justify-between">
           
-          {/* Left Side - Email Sign In/Up */}
+          {/* Left Side - Email Sign In */}
           <div className="w-5/12">
             <div className="bg-gray-800/95 backdrop-blur-md p-8 rounded-xl shadow-2xl border border-gray-700/50">
               <h2 className="text-2xl font-bold text-white mb-6 text-center">
-                {needsConfirmation ? 'Confirm Your Email' : isSignUp ? 'Create Account' : 'Email Sign In'}
+                Email Sign In
               </h2>
 
               {error && (
@@ -169,188 +90,54 @@ export default function SignIn({ onSignIn }: SignInProps) {
                 </div>
               )}
 
-              {success && (
-                <div className="bg-green-900/50 border border-green-500/50 text-green-200 p-3 rounded-md mb-4 text-sm">
-                  {success}
+              <form onSubmit={handleSignIn} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700/80 backdrop-blur-sm text-white"
+                    placeholder="your.email@example.com"
+                    required
+                  />
                 </div>
-              )}
-
-              {needsConfirmation ? (
-                <form onSubmit={handleConfirmSignUp} className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Confirmation Code
-                    </label>
-                    <input
-                      type="text"
-                      name="confirmationCode"
-                      value={formData.confirmationCode}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700/80 backdrop-blur-sm text-white"
-                      placeholder="Enter 6-digit code"
-                      required
-                    />
-                  </div>
-                  
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white py-3 px-4 rounded-lg font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isLoading ? 'Confirming...' : 'Confirm Email'}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={handleResendCode}
-                    disabled={isLoading}
-                    className="w-full text-purple-400 hover:text-purple-300 text-sm transition-colors"
-                  >
-                    Resend confirmation code
-                  </button>
-                </form>
-              ) : isSignUp ? (
-                <form onSubmit={handleSignUp} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        First Name
-                      </label>
-                      <input
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700/80 backdrop-blur-sm text-white"
-                        placeholder="First name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Last Name
-                      </label>
-                      <input
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700/80 backdrop-blur-sm text-white"
-                        placeholder="Last name"
-                        required
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700/80 backdrop-blur-sm text-white"
-                      placeholder="your.email@example.com"
-                      required
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700/80 backdrop-blur-sm text-white"
-                      placeholder="Create a password"
-                      required
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Confirm Password
-                    </label>
-                    <input
-                      type="password"
-                      name="confirmPassword"
-                      value={formData.confirmPassword}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700/80 backdrop-blur-sm text-white"
-                      placeholder="Confirm your password"
-                      required
-                    />
-                  </div>
-                  
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white py-3 px-4 rounded-lg font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isLoading ? 'Creating Account...' : 'Create Account'}
-                  </button>
-                </form>
-              ) : (
-                <form onSubmit={handleSignIn} className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700/80 backdrop-blur-sm text-white"
-                      placeholder="your.email@example.com"
-                      required
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700/80 backdrop-blur-sm text-white"
-                      placeholder="Enter your password"
-                      required
-                    />
-                  </div>
-                  
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white py-3 px-4 rounded-lg font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isLoading ? 'Signing In...' : 'Sign In'}
-                  </button>
-                </form>
-              )}
-
-              {!needsConfirmation && (
-                <div className="mt-6 text-center">
-                  <button
-                    onClick={() => {
-                      setIsSignUp(!isSignUp)
-                      setError(null)
-                      setSuccess(null)
-                    }}
-                    className="text-purple-400 hover:text-purple-300 text-sm transition-colors"
-                  >
-                    {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
-                  </button>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700/80 backdrop-blur-sm text-white"
+                    placeholder="Enter your password"
+                    required
+                  />
                 </div>
-              )}
+                
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white py-3 px-4 rounded-lg font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isLoading ? 'Signing In...' : 'Sign In'}
+                </button>
+              </form>
+
+              <div className="mt-6 text-center">
+                <Link
+                  to="/signup"
+                  className="text-purple-400 hover:text-purple-300 text-sm transition-colors"
+                >
+                  Don't have an account? Sign up
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -404,16 +191,6 @@ export default function SignIn({ onSignIn }: SignInProps) {
                     <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                   </svg>
                   Continue with Twitter
-                </button>
-
-                <button
-                  onClick={() => handleFederatedSignIn('Apple')}
-                  className="w-full flex items-center justify-center px-4 py-3 border border-gray-600 rounded-lg hover:bg-gray-700/50 transition-colors text-white"
-                >
-                  <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.017 0C8.396 0 8.025.044 6.79.207 5.557.37 4.697.594 3.953.89c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.884.11 5.744-.054 6.978-.218 8.214-.262 8.585-.262 12.207s.044 3.993.207 5.228c.163 1.234.387 2.094.683 2.838.306.789.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.744.296 1.604.52 2.838.684 1.235.164 1.606.207 5.228.207s3.993-.043 5.228-.207c1.234-.164 2.094-.388 2.838-.684.789-.305 1.459-.718 2.126-1.384.666-.667 1.079-1.337 1.384-2.126.296-.744.52-1.604.684-2.838.164-1.235.207-1.606.207-5.228s-.043-3.993-.207-5.228c-.164-1.234-.388-2.094-.684-2.838-.305-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.744-.297-1.604-.52-2.838-.684C15.787.043 15.416 0 12.017 0zM12.017 2.162c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 3.653c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                  Continue with Apple
                 </button>
 
                 <button
