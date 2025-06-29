@@ -1,6 +1,7 @@
 import React, { useState, FormEvent } from "react"
 import { useNavigate } from "react-router-dom"
 import { generateClient } from 'aws-amplify/api'
+import { getCurrentUser } from 'aws-amplify/auth'
 
 const client = generateClient()
 
@@ -17,6 +18,7 @@ export default function Match() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [step, setStep] = useState<number>(1)
   const [error, setError] = useState<string | null>(null)
+  const [user, setUser] = useState<any>(null)
   const [formData, setFormData] = useState<FormData>({
     brand: "",
     influencer: "",
@@ -24,6 +26,19 @@ export default function Match() {
     missionStatement: "",
     targetEmotion: ""
   })
+
+  // Load user data on component mount
+  React.useEffect(() => {
+    const loadUser = async () => {
+      try {
+        const currentUser = await getCurrentUser()
+        setUser(currentUser)
+      } catch (error) {
+        console.log('User not authenticated')
+      }
+    }
+    loadUser()
+  }, [])
 
   // Available values for selection
   const availableValues = [
@@ -68,17 +83,26 @@ export default function Match() {
     setError(null)
 
     try {
-      // TODO: Replace with Amplify API call
+      // TODO: Replace with Amplify GraphQL mutation
       // const response = await client.graphql({
       //   query: findInfluencerMatches,
-      //   variables: { input: formData }
+      //   variables: { 
+      //     input: {
+      //       ...formData,
+      //       userId: user?.userId
+      //     }
+      //   }
       // })
 
       // Temporary mock response
       await new Promise(resolve => setTimeout(resolve, 1500))
       
-      // Store the form data for the results page
-      localStorage.setItem('formData', JSON.stringify(formData))
+      // Store the form data and user info for the results page
+      localStorage.setItem('formData', JSON.stringify({
+        ...formData,
+        userId: user?.userId,
+        userEmail: user?.attributes?.email
+      }))
       
       // Navigate to results page
       navigate('/results')
@@ -250,6 +274,11 @@ export default function Match() {
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Discover influencers whose vibe aligns with your brand's identity and values
           </p>
+          {user && (
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+              Welcome back, {user.attributes?.given_name || user.username}!
+            </p>
+          )}
         </div>
 
         {/* Input Form */}

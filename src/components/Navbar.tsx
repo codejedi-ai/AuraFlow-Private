@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
-export default function Navbar() {
+interface NavbarProps {
+  user?: any
+  signOut?: () => void
+}
+
+export default function Navbar({ user, signOut }: NavbarProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
     <header className="fixed top-0 left-0 right-0 bg-gray-900 shadow-md z-50">
       <div className="container mx-auto px-4">
@@ -13,58 +21,108 @@ export default function Navbar() {
 
           {/* Navigation Links */}
           <nav className="hidden md:flex space-x-8">
-            <Link to="/" className="text-purple-600 dark:text-purple-300 font-medium">
+            <Link to="/" className="text-purple-600 dark:text-purple-300 font-medium hover:text-purple-400 transition-colors">
               Home
             </Link>
             <Link
               to="/philosophy"
-              className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"
+              className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
             >
               Philosophy
             </Link>
             <Link
               to="/synergy"
-              className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"
+              className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
             >
               Vibe & Identity
             </Link>
             <Link
               to="/mission"
-              className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"
+              className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
             >
               Our Mission
             </Link>
             <Link
               to="/contact"
-              className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"
+              className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
             >
               Contact
             </Link>
           </nav>
 
-          {/* Action Button */}
-          <div>
-            <Link
-              to="/match"
-              className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-            >
-              Get Started
-            </Link>
-          </div>
+          {/* User Menu */}
+          <div className="flex items-center space-x-4">
+            {user ? (
+              <div className="relative">
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                >
+                  <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
+                    <span className="text-sm font-medium text-white">
+                      {user.attributes?.given_name?.[0] || user.username[0].toUpperCase()}
+                    </span>
+                  </div>
+                  <span className="hidden md:block">
+                    {user.attributes?.given_name || user.username}
+                  </span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+                {isMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50">
+                    <Link
+                      to="/profile"
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Profile
+                    </Link>
+                    <Link
+                      to="/match"
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Find Matches
+                    </Link>
+                    <hr className="my-1" />
+                    <button
+                      onClick={() => {
+                        setIsMenuOpen(false)
+                        signOut?.()
+                      }}
+                      className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                to="/match"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+                Get Started
+              </Link>
+            )}
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>

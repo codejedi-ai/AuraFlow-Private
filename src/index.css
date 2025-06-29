@@ -35,6 +35,42 @@ body {
   animation: fadeIn 0.3s ease-out forwards;
 }
 
+/* Amplify UI Customizations */
+:root {
+  --amplify-colors-brand-primary-10: rgb(147 51 234);
+  --amplify-colors-brand-primary-80: rgb(147 51 234);
+  --amplify-colors-brand-primary-90: rgb(126 34 206);
+  --amplify-colors-brand-primary-100: rgb(109 40 217);
+}
+
+.amplify-authenticator {
+  --amplify-components-authenticator-router-background-color: rgb(31 41 55);
+  --amplify-components-authenticator-router-border-color: rgb(75 85 99);
+}
+
+.amplify-card {
+  --amplify-components-card-background-color: rgb(31 41 55);
+  --amplify-components-card-border-color: rgb(75 85 99);
+}
+
+.amplify-heading {
+  --amplify-components-heading-color: rgb(243 244 246);
+}
+
+.amplify-text {
+  --amplify-components-text-color: rgb(209 213 219);
+}
+
+.amplify-input {
+  --amplify-components-fieldcontrol-background-color: rgb(55 65 81);
+  --amplify-components-fieldcontrol-border-color: rgb(107 114 128);
+  --amplify-components-fieldcontrol-color: rgb(243 244 246);
+}
+
+.amplify-label {
+  --amplify-components-label-color: rgb(209 213 219);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

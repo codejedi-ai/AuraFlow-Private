@@ -1,5 +1,6 @@
 import React, { useState, FormEvent } from "react"
 import { generateClient } from 'aws-amplify/api'
+import { getCurrentUser } from 'aws-amplify/auth'
 
 const client = generateClient()
 
@@ -18,6 +19,25 @@ export default function Contact() {
     message?: string
   } | null>(null)
 
+  // Pre-fill form with user data if authenticated
+  React.useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        const user = await getCurrentUser()
+        if (user?.attributes) {
+          setFormData(prev => ({
+            ...prev,
+            name: `${user.attributes.given_name || ''} ${user.attributes.family_name || ''}`.trim(),
+            email: user.attributes.email || '',
+          }))
+        }
+      } catch (error) {
+        // User not authenticated, keep empty form
+      }
+    }
+    loadUserData()
+  }, [])
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target
     setFormData((prev) => ({
@@ -34,9 +54,9 @@ export default function Contact() {
     try {
       console.log("Submitting form data:", formData)
 
-      // TODO: Replace with Amplify API call
+      // TODO: Replace with Amplify GraphQL mutation
       // const response = await client.graphql({
-      //   query: createContact,
+      //   query: createContactSubmission,
       //   variables: { input: formData }
       // })
 
@@ -48,15 +68,15 @@ export default function Contact() {
         message: "Thank you for your message! We will get back to you soon.",
       })
       
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
+      // Reset form (keep user info)
+      setFormData(prev => ({
+        name: prev.name,
+        email: prev.email,
         subject: "",
         message: "",
         isInfluencer: false,
         isBrand: false,
-      })
+      }))
     } catch (error) {
       console.error("Error submitting form:", error)
       setSubmitStatus({
