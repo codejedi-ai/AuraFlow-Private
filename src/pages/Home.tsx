@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function Home() {
+  const navigate = useNavigate()
+
+  const handleGetStarted = () => {
+    navigate('/signin', { state: { from: { pathname: '/match' } } })
+  }
+
   return (
     <div className="flex flex-col items-center">
       <section className="w-full py-12 md:py-24 lg:py-32">
@@ -33,7 +39,7 @@ export default function Home() {
             <div className="space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">The Essence of Connection</h2>
               <p className="text-gray-300 md:text-lg">
-                At AuraFlow, we believe that the essence of connection lies in synergy—where the vibrant energy of an
+                At VibeScope, we believe that the essence of connection lies in synergy—where the vibrant energy of an
                 influencer's unique "vibe" meets the grounded strength of a brand's
                 "identity."
               </p>
@@ -99,12 +105,12 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-10">
-            <Link
-              to="/match"
+            <button
+              onClick={handleGetStarted}
               className="inline-flex h-12 items-center justify-center rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 px-10 text-sm font-medium text-white shadow transition-colors hover:from-purple-700 hover:to-indigo-700"
             >
               Start Matching Now
-            </Link>
+            </button>
           </div>
         </div>
       </section>

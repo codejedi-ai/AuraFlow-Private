@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 
 interface NavbarProps {
@@ -8,6 +8,19 @@ interface NavbarProps {
 
 export default function Navbar({ user, signOut }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navigate = useNavigate()
+
+  const handleSignInClick = () => {
+    navigate('/signin')
+  }
+
+  const handleProtectedRoute = (path: string) => {
+    if (user) {
+      navigate(path)
+    } else {
+      navigate('/signin', { state: { from: { pathname: path } } })
+    }
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-gray-900 shadow-md z-50">
@@ -16,7 +29,9 @@ export default function Navbar({ user, signOut }: NavbarProps) {
           {/* Logo and Brand */}
           <div className="flex items-center space-x-3">
             <img src="/logo.png" alt="VibeScope" width={36} height={36} className="rounded-lg" />
-            <span className="font-bold text-lg text-purple-700 dark:text-purple-300">VibeScope</span>
+            <Link to="/" className="font-bold text-lg text-purple-700 dark:text-purple-300 hover:text-purple-500 transition-colors">
+              VibeScope
+            </Link>
           </div>
 
           {/* Navigation Links */}
@@ -73,20 +88,24 @@ export default function Navbar({ user, signOut }: NavbarProps) {
 
                 {isMenuOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50">
-                    <Link
-                      to="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                      onClick={() => setIsMenuOpen(false)}
+                    <button
+                      onClick={() => {
+                        setIsMenuOpen(false)
+                        handleProtectedRoute('/profile')
+                      }}
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       Profile
-                    </Link>
-                    <Link
-                      to="/match"
-                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                      onClick={() => setIsMenuOpen(false)}
+                    </button>
+                    <button
+                      onClick={() => {
+                        setIsMenuOpen(false)
+                        handleProtectedRoute('/match')
+                      }}
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       Find Matches
-                    </Link>
+                    </button>
                     <hr className="my-1" />
                     <button
                       onClick={() => {
@@ -101,12 +120,20 @@ export default function Navbar({ user, signOut }: NavbarProps) {
                 )}
               </div>
             ) : (
-              <Link
-                to="/match"
-                className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-              >
-                Get Started
-              </Link>
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={handleSignInClick}
+                  className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
+                >
+                  Sign In
+                </button>
+                <button
+                  onClick={() => handleProtectedRoute('/match')}
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                >
+                  Get Started
+                </button>
+              </div>
             )}
 
             {/* Mobile Menu Button */}
