@@ -18,11 +18,174 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* Flowing Energy Background Animation */
+.energy-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #1f2937 0%, #111827 50%, #0f172a 100%);
+  overflow: hidden;
+}
+
+.energy-background::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 40% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+  animation: energyFlow 20s ease-in-out infinite;
+}
+
+.energy-background::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 60% 30%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 30% 70%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 70% 60%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+  animation: energyFlow 25s ease-in-out infinite reverse;
+}
+
+@keyframes energyFlow {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(-5%, -10%) rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: translate(5%, 5%) rotate(180deg) scale(0.9);
+  }
+  75% {
+    transform: translate(-10%, 10%) rotate(270deg) scale(1.05);
+  }
+}
+
+/* Floating Energy Particles */
+.energy-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, #8b5cf6, #a855f7);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: floatParticle 15s linear infinite;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 18s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 14s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 6s; animation-duration: 16s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 8s; animation-duration: 13s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 10s; animation-duration: 17s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 12s; animation-duration: 15s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 14s; animation-duration: 19s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 16s; animation-duration: 11s; }
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+    transform: translateY(90vh) translateX(10px) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(50vh) translateX(-20px) scale(1.2);
+  }
+  90% {
+    opacity: 0.4;
+    transform: translateY(10vh) translateX(15px) scale(0.8);
+  }
+  100% {
+    transform: translateY(-10vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Pulsing Aura Effect */
+.aura-pulse {
+  position: relative;
+}
+
+.aura-pulse::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, rgba(147, 51, 234, 0.2), rgba(79, 70, 229, 0.2));
+  border-radius: inherit;
+  z-index: -1;
+  animation: auraPulse 3s ease-in-out infinite;
+}
+
+@keyframes auraPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* Energy Wave Animation */
+.energy-wave {
+  position: relative;
+  overflow: hidden;
+}
+
+.energy-wave::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.1), transparent);
+  animation: energyWave 3s ease-in-out infinite;
+}
+
+@keyframes energyWave {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
   }
 }
 

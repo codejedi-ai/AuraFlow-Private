@@ -1,35 +1,35 @@
-# AuraVibe - AI-Powered Influencer Management Platform
+# AuraSight - AI-Powered Influencer Aura Analytics
 
-AuraVibe is a revolutionary platform that matches influencer auras with brand vibes through advanced AI technology, social media simulation, and multi-agent persona analysis.
+AuraSight is a revolutionary platform that provides deep insights into influencer auras through advanced AI technology, social media simulation, and multi-agent persona analysis.
 
 ## 🌟 Key Features
 
-### 🎭 Aura-Vibe Matching
-- **Influencer Aura Analysis**: Deep AI analysis of influencer personalities, values, and content style
-- **Brand Vibe Mapping**: Comprehensive brand identity and emotional frequency analysis
-- **Perfect Match Algorithm**: Proprietary AI that finds optimal aura-vibe resonance
+### 🔮 Aura Analysis Engine
+- **Influencer Aura Mapping**: Deep AI analysis of influencer energy patterns, personality traits, and authentic essence
+- **Brand Energy Analysis**: Comprehensive brand identity and emotional frequency mapping
+- **Perfect Alignment Algorithm**: Proprietary AI that finds optimal aura-energy resonance
 
 ### 🤖 AI Social Media Simulation
 - **Camel-AI Multi-Agent System**: Test different influencer personas before real partnerships
 - **Content Performance Prediction**: Simulate campaign outcomes with various influencer types
 - **Risk-Free Testing**: Validate partnerships through AI simulation before commitment
 
-### 📊 Brand Research Analytics
+### 📊 Brand Insight Analytics
 - **Audience Sentiment Analysis**: Understand how specific words appeal to different demographics
 - **Emotional Impact Mapping**: Track how messaging affects audience emotions
-- **Competitive Vibe Analysis**: Compare your brand's vibe against competitors
+- **Competitive Energy Analysis**: Compare your brand's energy against competitors
 
 ### 🎯 Advanced Matching Technology
 - **Quantum Resonance Algorithm**: Matches based on deep personality and value alignment
 - **Real-time Aura Tracking**: Monitor influencer aura changes over time
-- **Vibe Compatibility Scoring**: Precise compatibility metrics for brand-influencer pairs
+- **Energy Compatibility Scoring**: Precise compatibility metrics for brand-influencer pairs
 
 ## 🚀 Tech Stack
 
 - **Frontend**: Vite + React + TypeScript
 - **Backend**: AWS Amplify (GraphQL API, Authentication, Storage)
 - **AI/ML**: Custom aura analysis algorithms, Camel-AI integration
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS with custom energy animations
 - **Routing**: React Router DOM
 - **Authentication**: AWS Cognito
 
@@ -79,10 +79,10 @@ AuraVibe is a revolutionary platform that matches influencer auras with brand vi
 ## 🎨 Platform Capabilities
 
 ### For Brands
-- **Vibe Definition**: Map your brand's emotional frequency and values
+- **Energy Definition**: Map your brand's emotional frequency and values
 - **Aura Discovery**: Find influencers whose personal energy aligns with your brand
 - **Campaign Simulation**: Test partnerships through AI before going live
-- **Performance Analytics**: Track how well aura-vibe matches perform
+- **Performance Analytics**: Track how well aura-energy matches perform
 
 ### For Influencers
 - **Aura Analysis**: Understand your unique energetic signature
@@ -98,7 +98,7 @@ AuraVibe is a revolutionary platform that matches influencer auras with brand vi
 - Emotional signature mapping
 - Authenticity scoring
 
-### Vibe Mapping System
+### Energy Mapping System
 - Brand personality profiling
 - Emotional frequency analysis
 - Target audience resonance mapping
@@ -110,24 +110,32 @@ AuraVibe is a revolutionary platform that matches influencer auras with brand vi
 - Content performance modeling
 - Audience reaction simulation
 
+## 🎭 Visual Features
+
+### Flowing Energy Animations
+- **Dynamic Background**: Animated energy flows representing aura patterns
+- **Floating Particles**: Subtle particle effects that simulate energy movement
+- **Aura Pulse Effects**: Pulsing animations on key elements
+- **Energy Wave Transitions**: Smooth wave animations across components
+
 ## 📈 Use Cases
 
-1. **Brand-Influencer Matching**: Find perfect partnerships based on deep compatibility
+1. **Brand-Influencer Matching**: Find perfect partnerships based on deep aura compatibility
 2. **Campaign Planning**: Simulate different influencer combinations before launch
 3. **Content Strategy**: Optimize messaging for maximum audience resonance
 4. **Market Research**: Understand how different words/phrases appeal to audiences
-5. **Competitive Analysis**: Compare your brand's vibe against market leaders
+5. **Competitive Analysis**: Compare your brand's energy against market leaders
 
 ## 🔮 Future Roadmap
 
 - **Real-time Aura Tracking**: Monitor influencer aura changes in real-time
 - **Predictive Analytics**: Forecast partnership success rates
 - **Cross-Platform Integration**: Expand beyond social media to all digital touchpoints
-- **Global Vibe Database**: Build comprehensive database of cultural vibes worldwide
+- **Global Aura Database**: Build comprehensive database of cultural auras worldwide
 
 ## 🤝 Contributing
 
-We welcome contributions to AuraVibe! Please read our contributing guidelines and submit pull requests for any improvements.
+We welcome contributions to AuraSight! Please read our contributing guidelines and submit pull requests for any improvements.
 
 ## 📄 License
 
@@ -135,10 +143,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📞 Contact
 
-- **Email**: hello@auravibe.ai
-- **Support**: support@auravibe.ai
+- **Email**: hello@aurasight.ai
+- **Support**: support@aurasight.ai
 - **Phone**: (555) 123-AURA
 
 ---
 
-*AuraVibe - Where Auras Meet Vibes* ✨🌊
+*AuraSight - Where AI Meets Aura* ✨🔮
