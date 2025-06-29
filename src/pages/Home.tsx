@@ -102,11 +102,11 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-800">
-                Welcome to VibeScope
+                Welcome to AuraVibe
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-300 md:text-xl">
-                The ultimate influencer aura management platform. Track vibes, analyze brand resonance, and discover the
-                perfect energy for your marketing campaigns.
+                The AI-powered influencer management platform that matches influencer auras with brand vibes through 
+                advanced social media simulation and multi-agent persona analysis.
               </p>
             </div>
             <div className="space-x-4">
@@ -114,15 +114,61 @@ export default function Home() {
                 onClick={handleGetStarted}
                 className="inline-flex h-12 items-center justify-center rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 px-10 text-sm font-medium text-white shadow transition-colors hover:from-purple-700 hover:to-indigo-700"
               >
-                Start Matching Now
+                Start Matching Auras
               </button>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Platform Features */}
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-700">
+        <div className="container px-4 md:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl text-white mb-4">
+              AI-Powered Influencer Intelligence
+            </h2>
+            <p className="mx-auto max-w-[700px] text-gray-300 md:text-lg">
+              Harness the power of artificial intelligence to create perfect brand-influencer synergy
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
+              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                <span className="text-purple-600 text-xl">🎭</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-white">Aura-Vibe Matching</h3>
+              <p className="text-gray-300">
+                Our proprietary algorithm analyzes influencer auras and matches them with your brand's unique vibe for authentic partnerships.
+              </p>
+            </div>
+
+            <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
+              <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                <span className="text-indigo-600 text-xl">🤖</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-white">AI Social Media Simulation</h3>
+              <p className="text-gray-300">
+                Test different influencer personas with our Camel-AI multi-agent simulator before committing to partnerships.
+              </p>
+            </div>
+
+            <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <span className="text-blue-600 text-xl">📊</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-white">Brand Research Analytics</h3>
+              <p className="text-gray-300">
+                Discover how specific words and messaging appeal to different audiences through advanced sentiment analysis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Philosophy Section */}
-      <section id="philosophy" className="w-full py-12 md:py-24 lg:py-32 bg-gray-700">
+      <section id="philosophy" className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-white">
             <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-800">
@@ -131,7 +177,7 @@ export default function Home() {
             
             <div className="prose lg:prose-xl mx-auto">
               <p className="text-lg leading-relaxed mb-6 text-gray-300">
-                At VibeScope, we believe that the essence of connection lies in synergy—where the vibrant energy of an influencer's unique "vibe" meets the grounded strength of a brand's "identity." Influencers do more than create content; they emanate a personal ethos, a set of feelings, and an atmosphere that resonates with their audience.
+                At AuraVibe, we believe that the essence of connection lies in synergy—where the vibrant energy of an influencer's unique "aura" meets the grounded strength of a brand's "vibe." Influencers do more than create content; they emanate a personal ethos, a set of feelings, and an atmosphere that resonates with their audience.
               </p>
               
               <p className="text-lg leading-relaxed mb-6 text-gray-300">
@@ -140,16 +186,16 @@ export default function Home() {
               
               <div className="bg-gradient-to-r from-purple-900 to-indigo-900 p-6 rounded-lg shadow-inner my-8">
                 <blockquote className="italic text-gray-300 border-l-4 border-purple-500 pl-4">
-                  "The relationship between an influencer's vibe and a brand's identity is like the interplay of light and photons. Just as light brings life and clarity to the world through its photons, influencers illuminate and bring purpose to brand identities. Together, they form an inseparable bond, one amplifying the other."
+                  "The relationship between an influencer's aura and a brand's vibe is like the interplay of quantum particles. Just as particles can be entangled across vast distances, influencers and brands can create instantaneous resonance that transcends traditional marketing boundaries."
                 </blockquote>
               </div>
               
               <p className="text-lg leading-relaxed mb-6 text-gray-300">
-                VibeScope seeks to capture this harmony, connecting the expressive energy of influencers with the intentional vision of brands. We recognize that every influencer offers a unique spectrum of emotions, creativity, and authenticity—an aura that shapes how they are perceived.
+                AuraVibe seeks to capture this harmony through AI-powered analysis, connecting the expressive energy of influencers with the intentional vision of brands. We recognize that every influencer offers a unique spectrum of emotions, creativity, and authenticity—an aura that shapes how they are perceived.
               </p>
               
               <p className="text-lg leading-relaxed text-gray-300">
-                Our platform thrives on the belief that partnerships must be meaningful and authentic. VibeScope is not merely about bridging gaps; it is about weaving relationships where identity and vibe amplify each other, creating collaborations that stand out and leave a lasting impact.
+                Our platform thrives on the belief that partnerships must be meaningful and authentic. AuraVibe is not merely about bridging gaps; it is about weaving relationships where aura and vibe amplify each other, creating collaborations that stand out and leave a lasting impact.
               </p>
             </div>
           </div>
@@ -157,48 +203,48 @@ export default function Home() {
       </section>
 
       {/* Synergy Section */}
-      <section id="synergy" className="w-full py-12 md:py-24 lg:py-32">
+      <section id="synergy" className="w-full py-12 md:py-24 lg:py-32 bg-gray-700">
         <div className="container px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-white">
             <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-800">
-              Vibe & Identity: The Perfect Synergy
+              Aura & Vibe: The Perfect Synergy
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               <div className="bg-gray-800 p-6 rounded-lg shadow-md border border-gray-700">
-                <h3 className="text-xl font-semibold mb-4 text-purple-600">Influencer Vibe</h3>
+                <h3 className="text-xl font-semibold mb-4 text-purple-600">Influencer Aura</h3>
                 <p className="text-gray-300">
-                  Influencers emanate a personal ethos, a set of feelings, and an atmosphere that resonates with their audience. This unique "vibe" is the energy they bring to every piece of content they create.
+                  An influencer's aura is their unique energetic signature—the authentic essence they project through content, personality, and values. It's the intangible quality that makes audiences feel connected and inspired.
                 </p>
                 <div className="mt-6 h-40 bg-gradient-to-br from-purple-400 to-pink-300 rounded-lg flex items-center justify-center">
-                  <span className="text-white text-2xl font-bold">Energy</span>
+                  <span className="text-white text-2xl font-bold">✨ Aura</span>
                 </div>
               </div>
               
               <div className="bg-gray-800 p-6 rounded-lg shadow-md border border-gray-700">
-                <h3 className="text-xl font-semibold mb-4 text-indigo-600">Brand Identity</h3>
+                <h3 className="text-xl font-semibold mb-4 text-indigo-600">Brand Vibe</h3>
                 <p className="text-gray-300">
-                  Brands are embodiments of purpose and values that shape perceptions and inspire loyalty. Their "identity" is the foundation of how they're perceived in the marketplace.
+                  A brand's vibe is its emotional frequency—the feeling it wants to evoke in its audience. It encompasses the brand's personality, values, and the atmosphere it creates in every interaction.
                 </p>
                 <div className="mt-6 h-40 bg-gradient-to-br from-indigo-400 to-blue-300 rounded-lg flex items-center justify-center">
-                  <span className="text-white text-2xl font-bold">Purpose</span>
+                  <span className="text-white text-2xl font-bold">🌊 Vibe</span>
                 </div>
               </div>
             </div>
             
             <div className="bg-gray-800 p-8 rounded-lg shadow-lg mb-12 border border-gray-700">
-              <h3 className="text-2xl font-bold mb-6 text-center">When Vibe Meets Identity</h3>
+              <h3 className="text-2xl font-bold mb-6 text-center">When Aura Meets Vibe</h3>
               <p className="text-lg text-gray-300 mb-6">
-                The relationship between an influencer's vibe and a brand's identity is like the interplay of light and photons. Just as light brings life and clarity to the world through its photons, influencers illuminate and bring purpose to brand identities.
+                The magic happens when an influencer's aura resonates perfectly with a brand's vibe. Our AI analyzes thousands of data points—from content sentiment to audience engagement patterns—to identify these perfect matches.
               </p>
               <div className="h-60 bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 rounded-lg flex items-center justify-center">
-                <span className="text-white text-3xl font-bold">Transformation</span>
+                <span className="text-white text-3xl font-bold">🎯 Perfect Match</span>
               </div>
             </div>
             
             <div className="prose lg:prose-xl mx-auto">
               <p className="text-lg leading-relaxed text-gray-300">
-                When paired thoughtfully, these auras and identities merge to create something that is not only authentic but also transformative—a shared story that resonates deeply with audiences. Together, they form an inseparable bond, one amplifying the other.
+                When paired thoughtfully through our AI-powered matching system, these auras and vibes merge to create something that is not only authentic but also transformative—a shared story that resonates deeply with audiences and drives meaningful engagement.
               </p>
             </div>
           </div>
@@ -206,24 +252,23 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32 bg-gray-700">
+      <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Find Your Perfect Match</h2>
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">How AuraVibe Works</h2>
             <p className="mx-auto max-w-[700px] text-gray-300 md:text-lg mt-4">
-              Our platform helps brands and influencers create meaningful partnerships based on shared values and
-              authentic connections.
+              Our AI-powered platform creates meaningful partnerships through advanced analysis and simulation
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-4">
             <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
               <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-purple-600 text-xl">1</span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Define Your Identity</h3>
+              <h3 className="text-xl font-semibold mb-2">Define Your Vibe</h3>
               <p className="text-gray-300">
-                Share your brand's story, values, and mission to help us understand your unique identity.
+                Share your brand's story, values, and desired emotional impact to map your unique vibe signature.
               </p>
             </div>
 
@@ -231,19 +276,29 @@ export default function Home() {
               <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-indigo-600 text-xl">2</span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Discover Aligned Vibes</h3>
+              <h3 className="text-xl font-semibold mb-2">AI Aura Analysis</h3>
               <p className="text-gray-300">
-                Our algorithm matches you with influencers whose personal ethos resonates with your brand.
+                Our algorithm analyzes millions of influencer data points to identify auras that resonate with your vibe.
               </p>
             </div>
 
             <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-                <span className="text-purple-600 text-xl">3</span>
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <span className="text-blue-600 text-xl">3</span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Create Authentic Partnerships</h3>
+              <h3 className="text-xl font-semibold mb-2">Simulate & Test</h3>
               <p className="text-gray-300">
-                Build meaningful relationships that amplify both your brand and the influencer's unique voice.
+                Use our multi-agent AI simulator to test different influencer personas before making commitments.
+              </p>
+            </div>
+
+            <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-700">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                <span className="text-green-600 text-xl">4</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Create Magic</h3>
+              <p className="text-gray-300">
+                Build authentic partnerships that amplify both your brand's vibe and the influencer's unique aura.
               </p>
             </div>
           </div>
@@ -251,7 +306,7 @@ export default function Home() {
       </section>
 
       {/* Mission Section */}
-      <section id="mission" className="w-full py-12 md:py-24 lg:py-32">
+      <section id="mission" className="w-full py-12 md:py-24 lg:py-32 bg-gray-700">
         <div className="container px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-white">
             <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-800">
@@ -259,45 +314,45 @@ export default function Home() {
             </h2>
             
             <div className="bg-gray-800 p-8 rounded-lg shadow-lg mb-12 border border-gray-700">
-              <h3 className="text-2xl font-bold mb-6 text-center text-indigo-400">Creating Meaningful Connections</h3>
+              <h3 className="text-2xl font-bold mb-6 text-center text-indigo-400">Revolutionizing Influencer Marketing with AI</h3>
               <p className="text-lg text-gray-300 mb-6">
-                VibeScope seeks to capture the harmony between influencers and brands, connecting the expressive energy of influencers with the intentional vision of brands.
+                AuraVibe seeks to transform how brands and influencers connect by leveraging artificial intelligence to create deeper, more authentic partnerships that resonate with audiences on an emotional level.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
                 <div className="bg-purple-50 p-5 rounded-lg text-center">
                   <div className="text-purple-600 text-4xl mb-3">🔍</div>
                   <h4 className="font-semibold text-lg mb-2 text-black">Discover</h4>
-                  <p className="text-gray-600">Find the perfect match based on authentic alignment of values and energy</p>
+                  <p className="text-gray-600">Use AI to find perfect aura-vibe matches based on deep personality and value alignment</p>
                 </div>
                 
                 <div className="bg-indigo-50 p-5 rounded-lg text-center">
-                  <div className="text-indigo-600 text-4xl mb-3">🤝</div>
-                  <h4 className="font-semibold text-lg mb-2 text-black">Connect</h4>
-                  <p className="text-gray-600">Build relationships that go beyond transactional partnerships</p>
+                  <div className="text-indigo-600 text-4xl mb-3">🤖</div>
+                  <h4 className="font-semibold text-lg mb-2 text-black">Simulate</h4>
+                  <p className="text-gray-600">Test partnerships through multi-agent AI simulation before real-world implementation</p>
                 </div>
                 
                 <div className="bg-blue-50 p-5 rounded-lg text-center">
                   <div className="text-blue-600 text-4xl mb-3">✨</div>
                   <h4 className="font-semibold text-lg mb-2 text-black">Transform</h4>
-                  <p className="text-gray-600">Create content that resonates deeply with audiences</p>
+                  <p className="text-gray-600">Create content that resonates deeply and drives authentic audience engagement</p>
                 </div>
               </div>
             </div>
             
             <div className="prose lg:prose-xl mx-auto">
               <p className="text-lg leading-relaxed mb-6 text-gray-300">
-                We recognize that every influencer offers a unique spectrum of emotions, creativity, and authenticity—an aura that shapes how they are perceived. Similarly, every brand holds an identity rooted in its mission, values, and aspirations.
+                We recognize that every influencer offers a unique spectrum of emotions, creativity, and authenticity—an aura that shapes how they are perceived. Similarly, every brand holds a vibe rooted in its mission, values, and aspirations.
               </p>
               
               <div className="bg-gradient-to-r from-purple-900 to-indigo-900 p-6 rounded-lg shadow-inner my-8">
                 <blockquote className="italic text-gray-300 border-l-4 border-purple-500 pl-4">
-                  "Our platform thrives on the belief that partnerships must be meaningful and authentic. VibeScope is not merely about bridging gaps; it is about weaving relationships where identity and vibe amplify each other, creating collaborations that stand out and leave a lasting impact."
+                  "Our platform thrives on the belief that partnerships must be meaningful and authentic. AuraVibe is not merely about bridging gaps; it is about weaving relationships where aura and vibe amplify each other, creating collaborations that stand out and leave a lasting impact."
                 </blockquote>
               </div>
               
               <p className="text-lg leading-relaxed text-gray-300">
-                Through our innovative matching technology and deep understanding of both influencer dynamics and brand needs, we aim to revolutionize how partnerships are formed in the digital age.
+                Through our innovative AI technology, multi-agent simulation capabilities, and deep understanding of both influencer dynamics and brand psychology, we aim to revolutionize how partnerships are formed in the digital age.
               </p>
             </div>
           </div>
@@ -305,7 +360,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-gray-700">
+      <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-white">
             <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-800">
@@ -314,8 +369,8 @@ export default function Home() {
 
             <div className="bg-gray-800 p-8 rounded-lg shadow-lg mb-12 border border-gray-700">
               <p className="text-lg text-gray-300 mb-8 text-center">
-                Ready to discover the perfect match for your brand or showcase your unique influencer vibe? Get in touch with
-                our team today.
+                Ready to discover the perfect aura-vibe match for your brand or showcase your unique influencer energy? Get in touch with
+                our AI-powered team today.
               </p>
 
               <form className="space-y-6" onSubmit={handleSubmit}>
@@ -388,7 +443,7 @@ export default function Home() {
                     onChange={handleChange}
                     rows={6}
                     className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-700 text-white"
-                    placeholder="Tell us more about your needs..."
+                    placeholder="Tell us more about your aura-vibe matching needs..."
                     required
                   ></textarea>
                 </div>
@@ -436,7 +491,7 @@ export default function Home() {
                 <p className="text-gray-300">
                   123 Innovation Way
                   <br />
-                  Digital District, CA 94103
+                  AI District, CA 94103
                 </p>
               </div>
 
@@ -444,9 +499,9 @@ export default function Home() {
                 <div className="text-purple-600 text-3xl mb-3">📧</div>
                 <h3 className="font-semibold text-lg mb-2">Email Us</h3>
                 <p className="text-gray-300">
-                  hello@vibescope.com
+                  hello@auravibe.ai
                   <br />
-                  support@vibescope.com
+                  support@auravibe.ai
                 </p>
               </div>
 
@@ -454,7 +509,7 @@ export default function Home() {
                 <div className="text-purple-600 text-3xl mb-3">📱</div>
                 <h3 className="font-semibold text-lg mb-2">Call Us</h3>
                 <p className="text-gray-300">
-                  (555) 123-4567
+                  (555) 123-AURA
                   <br />
                   Mon-Fri, 9am-5pm PST
                 </p>

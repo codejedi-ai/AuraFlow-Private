@@ -10,9 +10,9 @@ const authComponents = {
   Header() {
     return (
       <div className="text-center mb-8">
-        <img src="/logo.png" alt="VibeScope" className="mx-auto mb-4 w-16 h-16 rounded-lg" />
-        <h1 className="text-2xl font-bold text-purple-600">Welcome to VibeScope</h1>
-        <p className="text-gray-600 mt-2">Sign in to discover your perfect influencer matches</p>
+        <img src="/logo.png" alt="AuraVibe" className="mx-auto mb-4 w-16 h-16 rounded-lg" />
+        <h1 className="text-2xl font-bold text-purple-600">Welcome to AuraVibe</h1>
+        <p className="text-gray-600 mt-2">Sign in to discover your perfect aura-vibe matches</p>
       </div>
     )
   }

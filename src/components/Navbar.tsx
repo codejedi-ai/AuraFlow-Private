@@ -35,9 +35,9 @@ export default function Navbar({ user, signOut }: NavbarProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo and Brand */}
           <div className="flex items-center space-x-3">
-            <img src="/logo.png" alt="VibeScope" width={36} height={36} className="rounded-lg" />
+            <img src="/logo.png" alt="AuraVibe" width={36} height={36} className="rounded-lg" />
             <Link to="/" className="font-bold text-lg text-purple-700 dark:text-purple-300 hover:text-purple-500 transition-colors">
-              VibeScope
+              AuraVibe
             </Link>
           </div>
 
@@ -59,7 +59,7 @@ export default function Navbar({ user, signOut }: NavbarProps) {
               onClick={() => scrollToSection('synergy')}
               className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
             >
-              Vibe & Identity
+              Aura & Vibe Matching
             </button>
             <button
               onClick={() => scrollToSection('mission')}
