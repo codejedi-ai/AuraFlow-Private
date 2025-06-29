@@ -101,7 +101,7 @@ export default function Home() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600 aura-pulse">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600">
                 Welcome to AuraSight
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-300 md:text-xl">
@@ -112,7 +112,7 @@ export default function Home() {
             <div className="space-x-4">
               <button
                 onClick={handleGetStarted}
-                className="inline-flex h-12 items-center justify-center rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 px-10 text-sm font-medium text-white shadow transition-all hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105 aura-pulse energy-wave"
+                className="inline-flex h-12 items-center justify-center rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 px-10 text-sm font-medium text-white shadow transition-all hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105"
               >
                 Analyze Auras Now
               </button>
@@ -125,7 +125,7 @@ export default function Home() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-800/50 backdrop-blur-sm">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl text-white mb-4 aura-pulse">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl text-white mb-4">
               AI-Powered Aura Intelligence
             </h2>
             <p className="mx-auto max-w-[700px] text-gray-300 md:text-lg">
@@ -134,8 +134,8 @@ export default function Home() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50 energy-wave">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4 aura-pulse">
+            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50">
+              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-purple-600 text-xl">🔮</span>
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">Aura Analysis Engine</h3>
@@ -144,8 +144,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50 energy-wave">
-              <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4 aura-pulse">
+            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50">
+              <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-indigo-600 text-xl">🤖</span>
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">AI Social Media Simulation</h3>
@@ -154,8 +154,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50 energy-wave">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 aura-pulse">
+            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-blue-600 text-xl">📊</span>
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">Brand Insight Analytics</h3>
@@ -171,7 +171,7 @@ export default function Home() {
       <section id="philosophy" className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-white">
-            <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600 aura-pulse">
+            <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600">
               Our Philosophy
             </h2>
             
@@ -184,7 +184,7 @@ export default function Home() {
                 Brands, similarly, emit their own energy patterns through their values, mission, and the emotional experiences they create. The magic happens when these energies align.
               </p>
               
-              <div className="bg-gradient-to-r from-purple-900/50 to-indigo-900/50 backdrop-blur-sm p-6 rounded-lg shadow-inner my-8 border border-purple-500/30 aura-pulse">
+              <div className="bg-gradient-to-r from-purple-900/50 to-indigo-900/50 backdrop-blur-sm p-6 rounded-lg shadow-inner my-8 border border-purple-500/30">
                 <blockquote className="italic text-gray-300 border-l-4 border-purple-500 pl-4">
                   "The relationship between an influencer's aura and a brand's energy is like quantum entanglement. When properly aligned, they create an instantaneous resonance that transcends traditional marketing boundaries, touching audiences on a deeper, more authentic level."
                 </blockquote>
@@ -206,38 +206,38 @@ export default function Home() {
       <section id="synergy" className="w-full py-12 md:py-24 lg:py-32 bg-gray-800/50 backdrop-blur-sm">
         <div className="container px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-white">
-            <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600 aura-pulse">
+            <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600">
               Aura Analytics: The Science of Influence
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md border border-gray-700/50 energy-wave">
+              <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md border border-gray-700/50">
                 <h3 className="text-xl font-semibold mb-4 text-purple-400">Influencer Aura Mapping</h3>
                 <p className="text-gray-300">
                   An influencer's aura is their unique energetic signature—the authentic essence they project through content, personality, and values. Our AI analyzes micro-expressions, language patterns, and engagement dynamics to create comprehensive aura profiles.
                 </p>
-                <div className="mt-6 h-40 bg-gradient-to-br from-purple-400/20 to-pink-300/20 rounded-lg flex items-center justify-center border border-purple-500/30 aura-pulse">
+                <div className="mt-6 h-40 bg-gradient-to-br from-purple-400/20 to-pink-300/20 rounded-lg flex items-center justify-center border border-purple-500/30">
                   <span className="text-white text-2xl font-bold">✨ Aura Energy</span>
                 </div>
               </div>
               
-              <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md border border-gray-700/50 energy-wave">
+              <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md border border-gray-700/50">
                 <h3 className="text-xl font-semibold mb-4 text-indigo-400">Brand Energy Analysis</h3>
                 <p className="text-gray-300">
                   A brand's energy is its emotional frequency—the feeling it wants to evoke in its audience. We analyze brand communications, visual identity, and audience responses to map the brand's energetic blueprint.
                 </p>
-                <div className="mt-6 h-40 bg-gradient-to-br from-indigo-400/20 to-blue-300/20 rounded-lg flex items-center justify-center border border-indigo-500/30 aura-pulse">
+                <div className="mt-6 h-40 bg-gradient-to-br from-indigo-400/20 to-blue-300/20 rounded-lg flex items-center justify-center border border-indigo-500/30">
                   <span className="text-white text-2xl font-bold">🌊 Brand Energy</span>
                 </div>
               </div>
             </div>
             
-            <div className="bg-gray-800/80 backdrop-blur-sm p-8 rounded-lg shadow-lg mb-12 border border-gray-700/50 energy-wave">
+            <div className="bg-gray-800/80 backdrop-blur-sm p-8 rounded-lg shadow-lg mb-12 border border-gray-700/50">
               <h3 className="text-2xl font-bold mb-6 text-center">When Auras Align</h3>
               <p className="text-lg text-gray-300 mb-6">
                 The magic happens when an influencer's aura resonates perfectly with a brand's energy. Our AI analyzes thousands of data points—from content sentiment to audience engagement patterns—to identify these perfect energetic matches.
               </p>
-              <div className="h-60 bg-gradient-to-r from-purple-500/20 via-indigo-500/20 to-blue-500/20 rounded-lg flex items-center justify-center border border-purple-500/30 aura-pulse">
+              <div className="h-60 bg-gradient-to-r from-purple-500/20 via-indigo-500/20 to-blue-500/20 rounded-lg flex items-center justify-center border border-purple-500/30">
                 <span className="text-white text-3xl font-bold">🎯 Perfect Resonance</span>
               </div>
             </div>
@@ -255,15 +255,15 @@ export default function Home() {
       <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl aura-pulse">How AuraSight Works</h2>
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">How AuraSight Works</h2>
             <p className="mx-auto max-w-[700px] text-gray-300 md:text-lg mt-4">
               Our AI-powered platform creates meaningful partnerships through advanced aura analysis and energy mapping
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-4">
-            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50 energy-wave">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4 aura-pulse">
+            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50">
+              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-purple-600 text-xl">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Map Your Energy</h3>
@@ -272,8 +272,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50 energy-wave">
-              <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4 aura-pulse">
+            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50">
+              <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-indigo-600 text-xl">2</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">AI Aura Analysis</h3>
@@ -282,8 +282,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50 energy-wave">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 aura-pulse">
+            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-blue-600 text-xl">3</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Simulate & Test</h3>
@@ -292,8 +292,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50 energy-wave">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4 aura-pulse">
+            <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-gray-700/50">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
                 <span className="text-green-600 text-xl">4</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Create Resonance</h3>
@@ -309,30 +309,30 @@ export default function Home() {
       <section id="mission" className="w-full py-12 md:py-24 lg:py-32 bg-gray-800/50 backdrop-blur-sm">
         <div className="container px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-white">
-            <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600 aura-pulse">
+            <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600">
               Our Mission
             </h2>
             
-            <div className="bg-gray-800/80 backdrop-blur-sm p-8 rounded-lg shadow-lg mb-12 border border-gray-700/50 energy-wave">
+            <div className="bg-gray-800/80 backdrop-blur-sm p-8 rounded-lg shadow-lg mb-12 border border-gray-700/50">
               <h3 className="text-2xl font-bold mb-6 text-center text-indigo-400">Revolutionizing Influence Through Aura Science</h3>
               <p className="text-lg text-gray-300 mb-6">
                 AuraSight seeks to transform how brands and influencers connect by leveraging artificial intelligence to decode the invisible energy patterns that drive authentic influence and create deeper, more meaningful partnerships.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
-                <div className="bg-purple-50/10 backdrop-blur-sm p-5 rounded-lg text-center border border-purple-500/30 aura-pulse">
+                <div className="bg-purple-50/10 backdrop-blur-sm p-5 rounded-lg text-center border border-purple-500/30">
                   <div className="text-purple-400 text-4xl mb-3">🔍</div>
                   <h4 className="font-semibold text-lg mb-2 text-white">Discover</h4>
                   <p className="text-gray-300">Use AI to decode aura patterns and find perfect energetic matches based on deep personality alignment</p>
                 </div>
                 
-                <div className="bg-indigo-50/10 backdrop-blur-sm p-5 rounded-lg text-center border border-indigo-500/30 aura-pulse">
+                <div className="bg-indigo-50/10 backdrop-blur-sm p-5 rounded-lg text-center border border-indigo-500/30">
                   <div className="text-indigo-400 text-4xl mb-3">🤖</div>
                   <h4 className="font-semibold text-lg mb-2 text-white">Simulate</h4>
                   <p className="text-gray-300">Test partnerships through multi-agent AI simulation before real-world implementation</p>
                 </div>
                 
-                <div className="bg-blue-50/10 backdrop-blur-sm p-5 rounded-lg text-center border border-blue-500/30 aura-pulse">
+                <div className="bg-blue-50/10 backdrop-blur-sm p-5 rounded-lg text-center border border-blue-500/30">
                   <div className="text-blue-400 text-4xl mb-3">✨</div>
                   <h4 className="font-semibold text-lg mb-2 text-white">Transform</h4>
                   <p className="text-gray-300">Create content that resonates on an energetic level and drives authentic engagement</p>
@@ -345,7 +345,7 @@ export default function Home() {
                 We recognize that every influencer possesses a unique energetic signature—an aura that encompasses their authentic essence, emotional resonance, and the intangible qualities that create genuine connection. Similarly, every brand emits its own energy pattern through its values, mission, and desired impact.
               </p>
               
-              <div className="bg-gradient-to-r from-purple-900/50 to-indigo-900/50 backdrop-blur-sm p-6 rounded-lg shadow-inner my-8 border border-purple-500/30 aura-pulse">
+              <div className="bg-gradient-to-r from-purple-900/50 to-indigo-900/50 backdrop-blur-sm p-6 rounded-lg shadow-inner my-8 border border-purple-500/30">
                 <blockquote className="italic text-gray-300 border-l-4 border-purple-500 pl-4">
                   "Our platform thrives on the belief that partnerships must be energetically aligned and authentically resonant. AuraSight is not merely about matching profiles; it is about creating energetic harmony where aura and brand energy amplify each other, resulting in collaborations that feel natural and drive meaningful impact."
                 </blockquote>
@@ -363,11 +363,11 @@ export default function Home() {
       <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-white">
-            <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600 aura-pulse">
+            <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600">
               Contact Us
             </h2>
 
-            <div className="bg-gray-800/80 backdrop-blur-sm p-8 rounded-lg shadow-lg mb-12 border border-gray-700/50 energy-wave">
+            <div className="bg-gray-800/80 backdrop-blur-sm p-8 rounded-lg shadow-lg mb-12 border border-gray-700/50">
               <p className="text-lg text-gray-300 mb-8 text-center">
                 Ready to discover the perfect aura alignment for your brand or showcase your unique influencer energy? Connect with
                 our AI-powered team today.
@@ -476,7 +476,7 @@ export default function Home() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2 px-4 rounded-md hover:from-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all disabled:opacity-70 disabled:cursor-not-allowed aura-pulse"
+                    className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2 px-4 rounded-md hover:from-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
@@ -485,7 +485,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md text-center border border-gray-700/50 energy-wave">
+              <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md text-center border border-gray-700/50">
                 <div className="text-purple-400 text-3xl mb-3">📍</div>
                 <h3 className="font-semibold text-lg mb-2">Our Location</h3>
                 <p className="text-gray-300">
@@ -495,7 +495,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md text-center border border-gray-700/50 energy-wave">
+              <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md text-center border border-gray-700/50">
                 <div className="text-purple-400 text-3xl mb-3">📧</div>
                 <h3 className="font-semibold text-lg mb-2">Email Us</h3>
                 <p className="text-gray-300">
@@ -505,7 +505,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md text-center border border-gray-700/50 energy-wave">
+              <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-md text-center border border-gray-700/50">
                 <div className="text-purple-400 text-3xl mb-3">📱</div>
                 <h3 className="font-semibold text-lg mb-2">Call Us</h3>
                 <p className="text-gray-300">

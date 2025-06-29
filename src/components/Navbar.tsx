@@ -34,7 +34,7 @@ export default function Navbar({ user, signOut }: NavbarProps) {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo and Brand */}
-          <div className="flex items-center space-x-3 aura-pulse">
+          <div className="flex items-center space-x-3">
             <img src="/logo.png" alt="AuraSight" width={36} height={36} className="rounded-lg" />
             <Link to="/" className="font-bold text-lg text-purple-400 hover:text-purple-300 transition-colors">
               AuraSight
@@ -45,7 +45,7 @@ export default function Navbar({ user, signOut }: NavbarProps) {
           <nav className="hidden md:flex space-x-8">
             <button
               onClick={() => scrollToSection('home')}
-              className="text-purple-400 font-medium hover:text-purple-300 transition-colors energy-wave"
+              className="text-purple-400 font-medium hover:text-purple-300 transition-colors"
             >
               Home
             </button>
@@ -81,7 +81,7 @@ export default function Navbar({ user, signOut }: NavbarProps) {
               <div className="relative">
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors aura-pulse"
+                  className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
                 >
                   <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full flex items-center justify-center">
                     <span className="text-sm font-medium text-white">
@@ -133,7 +133,7 @@ export default function Navbar({ user, signOut }: NavbarProps) {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={handleSignInClick}
-                  className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all transform hover:scale-105 aura-pulse"
+                  className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all transform hover:scale-105"
                 >
                   Sign In
                 </button>
