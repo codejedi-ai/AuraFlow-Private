@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { Authenticator } from '@aws-amplify/ui-react'
 import { getCurrentUser } from 'aws-amplify/auth'
 import { useState, useEffect } from 'react'
@@ -12,6 +12,10 @@ import SignIn from './pages/SignIn'
 function App() {
   const [user, setUser] = useState<any>(null)
   const [loading, setLoading] = useState(true)
+  const location = useLocation()
+
+  // Check if we're on the sign-in page
+  const isSignInPage = location.pathname === '/signin'
 
   useEffect(() => {
     checkAuthState()
@@ -70,8 +74,10 @@ function App() {
       </div>
       
       <div className="relative z-10">
-        <Navbar user={user} signOut={handleSignOut} />
-        <main className="container mx-auto px-4 py-8">
+        {/* Only show navbar if not on sign-in page */}
+        {!isSignInPage && <Navbar user={user} signOut={handleSignOut} />}
+        
+        <main className={isSignInPage ? "" : "container mx-auto px-4 py-8"}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/signin" element={<SignIn onSignIn={checkAuthState} />} />
@@ -80,14 +86,18 @@ function App() {
             <Route path="/profile" element={user ? <Profile user={user} /> : <SignIn onSignIn={checkAuthState} />} />
           </Routes>
         </main>
-        <footer className="bg-gray-800/80 backdrop-blur-sm text-white p-6 mt-12 border-t border-gray-700/50">
-          <div className="container mx-auto text-center">
-            <p>© {new Date().getFullYear()} AuraSight. All rights reserved.</p>
-            <p className="mt-2 text-gray-400 text-sm">
-              AI-powered influencer aura analytics and brand insight optimization.
-            </p>
-          </div>
-        </footer>
+        
+        {/* Only show footer if not on sign-in page */}
+        {!isSignInPage && (
+          <footer className="bg-gray-800/80 backdrop-blur-sm text-white p-6 mt-12 border-t border-gray-700/50">
+            <div className="container mx-auto text-center">
+              <p>© {new Date().getFullYear()} AuraSight. All rights reserved.</p>
+              <p className="mt-2 text-gray-400 text-sm">
+                AI-powered influencer aura analytics and brand insight optimization.
+              </p>
+            </div>
+          </footer>
+        )}
       </div>
     </div>
   )
