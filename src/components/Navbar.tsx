@@ -133,15 +133,9 @@ export default function Navbar({ user, signOut }: NavbarProps) {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={handleSignInClick}
-                  className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
-                >
-                  Sign In
-                </button>
-                <button
-                  onClick={() => handleProtectedRoute('/match')}
                   className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all transform hover:scale-105 aura-pulse"
                 >
-                  Get Started
+                  Sign In
                 </button>
               </div>
             )}
