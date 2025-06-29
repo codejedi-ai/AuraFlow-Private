@@ -1,8 +1,7 @@
-"use client"
+import React, { useState, FormEvent } from "react"
+import { generateClient } from 'aws-amplify/api'
 
-import type React from "react"
-
-import { useState, type FormEvent } from "react"
+const client = generateClient()
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -35,33 +34,29 @@ export default function Contact() {
     try {
       console.log("Submitting form data:", formData)
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      // TODO: Replace with Amplify API call
+      // const response = await client.graphql({
+      //   query: createContact,
+      //   variables: { input: formData }
+      // })
+
+      // Temporary mock response
+      await new Promise(resolve => setTimeout(resolve, 1000))
+
+      setSubmitStatus({
+        success: true,
+        message: "Thank you for your message! We will get back to you soon.",
       })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setSubmitStatus({
-          success: true,
-          message: "Thank you for your message! We will get back to you soon.",
-        })
-        // Reset form
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-          isInfluencer: false,
-          isBrand: false,
-        })
-      } else {
-        throw new Error(data.message || "Something went wrong")
-      }
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        isInfluencer: false,
+        isBrand: false,
+      })
     } catch (error) {
       console.error("Error submitting form:", error)
       setSubmitStatus({
@@ -72,6 +67,7 @@ export default function Contact() {
       setIsSubmitting(false)
     }
   }
+
   return (
     <div className="max-w-4xl mx-auto pt-20 text-white">
       <h1 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-800">
@@ -168,7 +164,7 @@ export default function Contact() {
                 onChange={handleChange}
                 className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-600 rounded bg-gray-700"
               />
-              <span className="ml-2 text-sm text-gray-300">I&apos;m an influencer looking to connect with brands</span>
+              <span className="ml-2 text-sm text-gray-300">I'm an influencer looking to connect with brands</span>
             </label>
 
             <label className="flex items-center mt-2">
@@ -226,10 +222,6 @@ export default function Contact() {
           </p>
         </div>
       </div>
-      <footer className="text-center text-gray-500 py-4">
-        <p>© {new Date().getFullYear()} VibeScope. All rights reserved.</p>
-        <p className="mt-2 text-gray-400 text-sm">Tracking influencer auras and optimizing brand resonance.</p>
-      </footer>
     </div>
   )
 }

@@ -39,7 +39,7 @@ export default function Mission() {
         
         <div className="bg-gradient-to-r from-purple-900 to-indigo-900 p-6 rounded-lg shadow-inner my-8">
           <blockquote className="italic text-gray-300 border-l-4 border-purple-500 pl-4">
-            &quot;Our platform thrives on the belief that partnerships must be meaningful and authentic. AuraFlow is not merely about bridging gaps; it is about weaving relationships where identity and vibe amplify each other, creating collaborations that stand out and leave a lasting impact.&quot;
+            "Our platform thrives on the belief that partnerships must be meaningful and authentic. AuraFlow is not merely about bridging gaps; it is about weaving relationships where identity and vibe amplify each other, creating collaborations that stand out and leave a lasting impact."
           </blockquote>
         </div>
         

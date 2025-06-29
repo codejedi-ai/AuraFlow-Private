@@ -1,9 +1,6 @@
-"use client"
+import { Link } from "react-router-dom"
 
-// import Image from "next/image";
-import Link from "next/link"
-
-export default function Home(): JSX.Element {
+export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <section className="w-full py-12 md:py-24 lg:py-32">
@@ -20,7 +17,7 @@ export default function Home(): JSX.Element {
             </div>
             <div className="space-x-4">
               <Link
-                href="/philosophy"
+                to="/philosophy"
                 className="inline-flex h-10 items-center justify-center rounded-md bg-purple-600 px-8 text-sm font-medium text-white shadow transition-colors hover:bg-purple-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-purple-700"
               >
                 Discover Our Philosophy
@@ -37,11 +34,11 @@ export default function Home(): JSX.Element {
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">The Essence of Connection</h2>
               <p className="text-gray-300 md:text-lg">
                 At AuraFlow, we believe that the essence of connection lies in synergy—where the vibrant energy of an
-                influencer&#39;s unique &quot;vibe&quot; meets the grounded strength of a brand&#39;s
-                &quot;identity.&quot;
+                influencer's unique "vibe" meets the grounded strength of a brand's
+                "identity."
               </p>
               <Link
-                href="/synergy"
+                to="/synergy"
                 className="inline-flex h-10 items-center justify-center rounded-md bg-indigo-600 px-8 text-sm font-medium text-white shadow transition-colors hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-700"
               >
                 Learn More
@@ -76,7 +73,7 @@ export default function Home(): JSX.Element {
               </div>
               <h3 className="text-xl font-semibold mb-2">Define Your Identity</h3>
               <p className="text-gray-300">
-                Share your brand&#39;s story, values, and mission to help us understand your unique identity.
+                Share your brand's story, values, and mission to help us understand your unique identity.
               </p>
             </div>
 
@@ -96,14 +93,14 @@ export default function Home(): JSX.Element {
               </div>
               <h3 className="text-xl font-semibold mb-2">Create Authentic Partnerships</h3>
               <p className="text-gray-300">
-                Build meaningful relationships that amplify both your brand and the influencer&apos;s unique voice.
+                Build meaningful relationships that amplify both your brand and the influencer's unique voice.
               </p>
             </div>
           </div>
 
           <div className="text-center mt-10">
             <Link
-              href="/match"
+              to="/match"
               className="inline-flex h-12 items-center justify-center rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 px-10 text-sm font-medium text-white shadow transition-colors hover:from-purple-700 hover:to-indigo-700"
             >
               Start Matching Now

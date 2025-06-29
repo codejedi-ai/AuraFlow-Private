@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VibeScope - Vite + AWS Amplify
+
+This project has been refactored from Next.js to use Vite and AWS Amplify for a modern, scalable architecture.
+
+## Tech Stack
+
+- **Frontend**: Vite + React + TypeScript
+- **Backend**: AWS Amplify (GraphQL API, Authentication, Storage)
+- **Styling**: Tailwind CSS
+- **Routing**: React Router DOM
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-\`\`\`bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-\`\`\`
+1. Install Node.js (v18 or higher)
+2. Install AWS CLI and configure your credentials
+3. Install Amplify CLI: `npm install -g @aws-amplify/cli`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Initialize Amplify (first time only):
+   ```bash
+   amplify init
+   ```
 
-## Learn More
+4. Add Amplify categories:
+   ```bash
+   # Add authentication
+   amplify add auth
+   
+   # Add GraphQL API
+   amplify add api
+   
+   # Add storage (optional)
+   amplify add storage
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+5. Push to AWS:
+   ```bash
+   amplify push
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+6. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```
+src/
+├── components/          # Reusable UI components
+├── pages/              # Page components
+├── lib/                # Utility functions
+├── main.tsx            # Application entry point
+└── App.tsx             # Main app component with routing
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## AWS Amplify Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Authentication
+- User sign up/sign in
+- Password reset
+- User profile management
+
+### GraphQL API
+- Contact form submissions
+- Influencer matching algorithm
+- Report generation
+
+### Storage (Optional)
+- File uploads
+- Image storage for profiles
+
+## Deployment
+
+The application is configured for automatic deployment with AWS Amplify:
+
+1. Connect your repository to Amplify Console
+2. The `amplify.yml` file will handle the build process
+3. Push changes to trigger automatic deployments
+
+## Environment Variables
+
+Amplify automatically manages environment variables for:
+- API endpoints
+- Authentication configuration
+- Storage buckets
+
+## Development
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Migration Notes
+
+This project was migrated from Next.js to Vite + Amplify:
+- Server-side API routes replaced with AWS Lambda functions
+- Next.js routing replaced with React Router
+- Static generation replaced with SPA deployment
+- Authentication integrated with AWS Cognito

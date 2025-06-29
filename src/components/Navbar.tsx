@@ -1,5 +1,4 @@
-import Link from "next/link"
-import Image from "next/image"
+import { Link } from "react-router-dom"
 
 export default function Navbar() {
   return (
@@ -8,35 +7,35 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo and Brand */}
           <div className="flex items-center space-x-3">
-            <Image src="/logo.png" alt="VibeScope" width={36} height={36} className="rounded-lg" priority />
+            <img src="/logo.png" alt="VibeScope" width={36} height={36} className="rounded-lg" />
             <span className="font-bold text-lg text-purple-700 dark:text-purple-300">VibeScope</span>
           </div>
 
           {/* Navigation Links */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="/" className="text-purple-600 dark:text-purple-300 font-medium">
+            <Link to="/" className="text-purple-600 dark:text-purple-300 font-medium">
               Home
             </Link>
             <Link
-              href="/philosophy"
+              to="/philosophy"
               className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"
             >
               Philosophy
             </Link>
             <Link
-              href="/synergy"
+              to="/synergy"
               className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"
             >
               Vibe & Identity
             </Link>
             <Link
-              href="/mission"
+              to="/mission"
               className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"
             >
               Our Mission
             </Link>
             <Link
-              href="/contact"
+              to="/contact"
               className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"
             >
               Contact
@@ -46,7 +45,7 @@ export default function Navbar() {
           {/* Action Button */}
           <div>
             <Link
-              href="/match"
+              to="/match"
               className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
               Get Started

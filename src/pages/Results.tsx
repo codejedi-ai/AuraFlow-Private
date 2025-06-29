@@ -1,86 +1,106 @@
-"use client";
+import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { generateClient } from 'aws-amplify/api'
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
+const client = generateClient()
 
 // Define interfaces for type safety
 interface InfluencerMatch {
-  name: string;
-  platform: string;
-  followers: string;
-  engagement: string;
-  niche: string;
-  details: string;
-  values: string[];
-  vibeScore: number;
-  audienceAlignment: number;
-  contentStyle: string;
+  name: string
+  platform: string
+  followers: string
+  engagement: string
+  niche: string
+  details: string
+  values: string[]
+  vibeScore: number
+  audienceAlignment: number
+  contentStyle: string
 }
 
 interface FormData {
-  brand: string;
-  influencer: string;
-  brandValues: string[];
-  missionStatement: string;
-  targetEmotion: string;
+  brand: string
+  influencer: string
+  brandValues: string[]
+  missionStatement: string
+  targetEmotion: string
 }
 
-export default function Results(): JSX.Element {
-  const [matches, setMatches] = useState<InfluencerMatch[]>([]);
-  const [formData, setFormData] = useState<FormData | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [showThankYou, setShowThankYou] = useState<boolean>(false);
+export default function Results() {
+  const [matches, setMatches] = useState<InfluencerMatch[]>([])
+  const [formData, setFormData] = useState<FormData | null>(null)
+  const [error, setError] = useState<string | null>(null)
+  const [showThankYou, setShowThankYou] = useState<boolean>(false)
 
   useEffect(() => {
     // Get data from localStorage
-    const storedMatches = localStorage.getItem('matchResults');
-    const storedFormData = localStorage.getItem('formData');
-    const storedError = localStorage.getItem('matchError');
-    
-    if (storedMatches) {
-      setMatches(JSON.parse(storedMatches));
-    }
+    const storedFormData = localStorage.getItem('formData')
+    const storedError = localStorage.getItem('matchError')
     
     if (storedFormData) {
-      setFormData(JSON.parse(storedFormData));
+      setFormData(JSON.parse(storedFormData))
+      // Generate mock matches for demo
+      generateMockMatches(JSON.parse(storedFormData))
     }
     
     if (storedError) {
-      setError(storedError);
-      localStorage.removeItem('matchError');
+      setError(storedError)
+      localStorage.removeItem('matchError')
     }
-  }, []);
+  }, [])
+
+  const generateMockMatches = (data: FormData) => {
+    // Generate mock matches based on form data
+    const mockMatches: InfluencerMatch[] = [
+      {
+        name: "Kai Naturals",
+        platform: "Instagram",
+        followers: "1.2M",
+        engagement: "4.8%",
+        niche: "Sustainable Living",
+        details: `Creates authentic content focused on sustainable living and lifestyle. Their content reflects a deep commitment to environmental causes, aligning perfectly with brands that prioritize ${data.brandValues.join(", ")}.`,
+        values: data.brandValues.slice(0, 3),
+        vibeScore: 92,
+        audienceAlignment: 88,
+        contentStyle: "Educational & Inspirational"
+      },
+      {
+        name: "Maya Creative",
+        platform: "TikTok",
+        followers: "850K",
+        engagement: "5.2%",
+        niche: "Creative Content",
+        details: `Maya's creative approach connects with audiences seeking innovation and authenticity. Their vibe balances creativity with accessibility, making complex topics approachable.`,
+        values: data.brandValues.slice(1, 4),
+        vibeScore: 87,
+        audienceAlignment: 79,
+        contentStyle: "Creative & Engaging"
+      }
+    ]
+    setMatches(mockMatches)
+  }
 
   const handleGenerateReport = async () => {
     try {
-      // Send the form data to the backend
+      // TODO: Replace with Amplify API call
+      // const response = await client.graphql({
+      //   query: generateReport,
+      //   variables: { input: { formData, matches } }
+      // })
+
       if (formData) {
-        console.log('Sending form data to backend for report generation:', formData);
-        
-        const response = await fetch('/api/report', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            formData,
-            matches
-          }),
-        });
-        
-        const data = await response.json();
-        console.log('Report generation response:', data);
+        console.log('Sending form data to backend for report generation:', formData)
       }
     } catch (error) {
-      console.error('Error generating report:', error);
+      console.error('Error generating report:', error)
     }
     
     // Show thank you modal
-    setShowThankYou(true);
+    setShowThankYou(true)
     setTimeout(() => {
-      setShowThankYou(false);
-    }, 5000);
-  };
+      setShowThankYou(false)
+    }, 5000)
+  }
 
   return (
     <div className="pt-20">
@@ -211,8 +231,8 @@ export default function Results(): JSX.Element {
               </button>
               
               <Link 
-                href="/match" 
-                className="px-5 py-3 rounded-lg bg-gray-700 text-white hover:bg-gray-600 font-medium transition-colors"
+                to="/match" 
+                className="px-5 py-3 rounded-lg bg-gray-700 text-white hover:bg-gray-600 font-medium transition-colors text-center"
               >
                 Find More Matches
               </Link>
@@ -264,5 +284,5 @@ export default function Results(): JSX.Element {
         )}
       </div>
     </div>
-  );
+  )
 }
