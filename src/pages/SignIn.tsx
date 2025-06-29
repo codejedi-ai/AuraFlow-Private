@@ -130,13 +130,16 @@ export default function SignIn({ onSignIn }: SignInProps) {
                 </button>
               </form>
 
-              <div className="mt-6 text-center">
+              <div className="mt-6 text-center space-y-2">
                 <Link
                   to="/signup"
-                  className="text-purple-400 hover:text-purple-300 text-sm transition-colors"
+                  className="block text-purple-400 hover:text-purple-300 text-sm transition-colors"
                 >
                   Don't have an account? Sign up
                 </Link>
+                <button className="text-gray-400 hover:text-gray-300 text-sm transition-colors">
+                  Forgot your password?
+                </button>
               </div>
             </div>
           </div>
